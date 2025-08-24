@@ -1,7 +1,35 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isLeftAnimated, setIsLeftAnimated] = useState(false);
+  const [isRightAnimated, setIsRightAnimated] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Animate left side first
+            setTimeout(() => setIsLeftAnimated(true), 200);
+            // Animate right side with delay
+            setTimeout(() => setIsRightAnimated(true), 400);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const openVideoModal = () => {
@@ -13,22 +41,33 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section ref={sectionRef} id="about" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
         {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div>
+          {/* Left side - Text content with left animation */}
+          <div className={`transition-all duration-1000 transform ${isLeftAnimated ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+            }`}>
             <div className="mb-6">
-              <p className="text-green-400 font-semibold mb-4 underline underline-offset-8">Get To Know</p>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">About Us</h2>
+              <p className={`text-green-400 font-semibold mb-4 underline underline-offset-8 transition-all duration-700 delay-200 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`}>
+                Get To Know
+              </p>
+              <h2 className={`text-4xl font-bold text-gray-900 mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`}>
+                About Us
+              </h2>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+            <h3 className={`text-2xl font-semibold text-gray-900 mb-6 transition-all duration-700 delay-400 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}>
               We Do Design, Code & Develop Software Finally Launch.
             </h3>
-            <p className="text-gray-600 mb-8">
+            <p className={`text-gray-600 mb-8 transition-all duration-700 delay-500 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              }`}>
               Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos only himenaeos. Praesent nec neque at dolor venenatis consectetur eu quis ex. the Donec lacinia placerat felis non aliquam.
             </p>
-            <div className="bg-gradient-to-br from-emerald-200/60 to-emerald-400/40 p-[1px] rounded-2xl">
+            <div className={`bg-gradient-to-br from-emerald-200/60 to-emerald-400/40 p-[1px] rounded-2xl transition-all duration-700 delay-600 transform ${isLeftAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-95'
+              }`}>
               <div className="bg-white rounded-2xl p-6 shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -48,11 +87,13 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right side - Overlapping image frames */}
-          <div className="flex justify-center">
+          {/* Right side - Overlapping image frames with right animation */}
+          <div className={`flex justify-center transition-all duration-1000 transform ${isRightAnimated ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
+            }`}>
             <div className="relative">
               {/* Larger background frame */}
-              <div className="w-96 h-80 bg-gray-200 rounded-lg shadow-lg overflow-hidden relative">
+              <div className={`w-96 h-80 bg-gray-200 rounded-lg shadow-lg overflow-hidden relative transition-all duration-700 delay-200 transform ${isRightAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'
+                }`}>
                 <img
                   src="/projects/about-baner-1.jpeg"
                   alt="Team collaboration"
@@ -61,7 +102,8 @@ const About = () => {
               </div>
 
               {/* Smaller overlapping frame with video */}
-              <div className="absolute -bottom-8 -right-8 w-64 h-48 bg-gray-300 rounded-lg shadow-xl overflow-hidden cursor-pointer" onClick={openVideoModal}>
+              <div className={`absolute -bottom-8 -right-8 w-64 h-48 bg-gray-300 rounded-lg shadow-xl overflow-hidden cursor-pointer transition-all duration-700 delay-400 transform ${isRightAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-12 opacity-0 scale-90'
+                }`} onClick={openVideoModal}>
                 <img src="/projects/about-baner-2.jpeg" alt="Team collaboration" className="w-full h-full object-cover" />
 
                 {/* Play button overlay */}
