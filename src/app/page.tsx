@@ -6,6 +6,7 @@ import Services from '@/components/Services';
 import About from '@/components/About';
 import FunFacts from '@/components/FunFacts';
 import Partners from '@/components/Partners';
+import Newsletter from '@/components/Newsletter';
 import Portfolio from '@/components/Portfolio';
 import Pricing from '@/components/Pricing';
 import Testimonials from '@/components/Testimonials';
@@ -29,7 +30,7 @@ export default function Home() {
       <Testimonials />
       <Team />
       <Blog />
-      <Contact />
+      <Newsletter />
       <Footer />
     </div>
   );

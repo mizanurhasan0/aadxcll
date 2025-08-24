@@ -108,7 +108,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex justify-center w-full">
-                <img src="https://via.placeholder.com/500x400" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" />
+                <img src="projects/hero-vector.png" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" />
               </div>
             </div>
           </div>
