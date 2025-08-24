@@ -7,7 +7,9 @@ import {
     Users,
     Settings,
     LogOut,
-    Home
+    Home,
+    Package,
+    Briefcase
 } from 'lucide-react';
 
 interface DashboardSidebarProps {
@@ -36,6 +38,18 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ activeTab, onTabCha
             label: 'Team Management',
             icon: Users,
             description: 'Manage team members'
+        },
+        {
+            id: 'packages',
+            label: 'Package Management',
+            icon: Package,
+            description: 'Manage pricing packages'
+        },
+        {
+            id: 'projects',
+            label: 'Project Management',
+            icon: Briefcase,
+            description: 'Manage portfolio projects'
         },
         {
             id: 'settings',

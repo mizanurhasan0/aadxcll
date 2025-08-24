@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import ImageUpload from '@/components/shared/ImageUpload';
 import FormField from '@/components/shared/FormField';
 import SimpleTextEditor from '@/components/shared/SimpleTextEditor';
+import BlogFrom from './blogManagement/BlogFrom';
 
 interface Blog {
     _id: string;
@@ -20,25 +21,17 @@ interface Blog {
     published: boolean;
     createdAt: string;
 }
-
+const schema = yup.object({
+    title: yup.string().required('Title is required'),
+    content: yup.string().required('Content is required'),
+    excerpt: yup.string().required('Excerpt is required'),
+    image: yup.string().optional(),
+    tags: yup.string().required('Tags are required'),
+    published: yup.boolean()
+});
 const BlogManagement: React.FC = () => {
     const { token } = useAuth();
 
-    // Get token from cookies if not in context
-    const getAuthToken = () => {
-        if (token) return token;
-        return getCookie('token');
-    };
-
-    // Validation schema
-    const schema = yup.object({
-        title: yup.string().required('Title is required'),
-        content: yup.string().required('Content is required'),
-        excerpt: yup.string().required('Excerpt is required'),
-        image: yup.string().optional(),
-        tags: yup.string().required('Tags are required'),
-        published: yup.boolean()
-    });
 
     const {
         control,
@@ -59,15 +52,52 @@ const BlogManagement: React.FC = () => {
         mode: 'onSubmit',
         reValidateMode: 'onSubmit'
     });
+    // Get token from cookies if not in context
+
 
     const [blogs, setBlogs] = useState<Blog[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingBlog, setEditingBlog] = useState<Blog | null>(null);
+    const getAuthToken = () => {
+        if (token) return token;
+        return getCookie('token');
+    };
 
     useEffect(() => {
         fetchBlogs();
     }, []);
+    const handleEdit = (blog: Blog) => {
+        setEditingBlog(blog);
+        setValue('title', blog.title);
+        setValue('content', blog.content || '');
+        setValue('excerpt', blog.excerpt);
+        setValue('image', blog.image);
+        setValue('tags', blog.tags.join(', '));
+        setValue('published', blog.published);
+        setIsModalOpen(true);
+    };
+    const handleDelete = async (blogId: string) => {
+        if (!confirm('Are you sure you want to delete this blog post?')) return;
 
+        try {
+            const response = await fetch(`/api/blogs/${blogId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            });
+
+            if (response.ok) {
+                fetchBlogs();
+            } else {
+                const error = await response.json();
+                alert(`Error: ${error.error}`);
+            }
+        } catch (error) {
+            console.error('Error deleting blog:', error);
+            alert('An error occurred while deleting the blog');
+        }
+    };
     const fetchBlogs = async () => {
         try {
             const response = await fetch('/api/blogs');
@@ -80,6 +110,11 @@ const BlogManagement: React.FC = () => {
         }
     };
 
+    const openCreateModal = () => {
+        setEditingBlog(null);
+        reset();
+        setIsModalOpen(true);
+    };
     const onSubmit = async (data: any) => {
         // Manual validation for image field
         if (!data.image || data.image.trim() === '') {
@@ -119,47 +154,6 @@ const BlogManagement: React.FC = () => {
             alert('An error occurred while saving the blog');
         }
     };
-
-    const handleEdit = (blog: Blog) => {
-        setEditingBlog(blog);
-        setValue('title', blog.title);
-        setValue('content', blog.content || '');
-        setValue('excerpt', blog.excerpt);
-        setValue('image', blog.image);
-        setValue('tags', blog.tags.join(', '));
-        setValue('published', blog.published);
-        setIsModalOpen(true);
-    };
-
-    const handleDelete = async (blogId: string) => {
-        if (!confirm('Are you sure you want to delete this blog post?')) return;
-
-        try {
-            const response = await fetch(`/api/blogs/${blogId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${getAuthToken()}`
-                }
-            });
-
-            if (response.ok) {
-                fetchBlogs();
-            } else {
-                const error = await response.json();
-                alert(`Error: ${error.error}`);
-            }
-        } catch (error) {
-            console.error('Error deleting blog:', error);
-            alert('An error occurred while deleting the blog');
-        }
-    };
-
-    const openCreateModal = () => {
-        setEditingBlog(null);
-        reset();
-        setIsModalOpen(true);
-    };
-
     return (
         <div className="space-y-6">
             <div className="flex justify-between items-center">
@@ -226,132 +220,17 @@ const BlogManagement: React.FC = () => {
 
             {/* Create/Edit Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-gray-800 rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                        <h3 className="text-xl font-bold text-white mb-4">
-                            {editingBlog ? 'Edit Blog Post' : 'Create New Blog Post'}
-                        </h3>
-
-                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                            <Controller
-                                name="title"
-                                control={control}
-                                render={({ field }) => (
-                                    <FormField
-                                        label="Title"
-                                        name="title"
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                        required
-                                        error={errors.title?.message}
-                                    />
-                                )}
-                            />
-
-                            <Controller
-                                name="content"
-                                control={control}
-                                render={({ field }) => (
-                                    <SimpleTextEditor
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                        label="Content"
-                                        required
-                                        error={errors.content?.message}
-                                    />
-                                )}
-                            />
-
-                            <Controller
-                                name="excerpt"
-                                control={control}
-                                render={({ field }) => (
-                                    <FormField
-                                        label="Excerpt"
-                                        name="excerpt"
-                                        type="textarea"
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                        required
-                                        error={errors.excerpt?.message}
-                                        rows={3}
-                                    />
-                                )}
-                            />
-
-                            <Controller
-                                name="image"
-                                control={control}
-                                render={({ field }) => (
-                                    <ImageUpload
-                                        currentImage={field.value}
-                                        onImageChange={field.onChange}
-                                        label="Blog Image"
-                                        required={editingBlog ? false : true} // Make image optional for new blogs
-                                        error={errors.image?.message}
-                                        touched={isSubmitting || Object.keys(errors).length > 0}
-                                    />
-                                )}
-                            />
-
-                            <Controller
-                                name="tags"
-                                control={control}
-                                render={({ field }) => (
-                                    <FormField
-                                        label="Tags (comma-separated)"
-                                        name="tags"
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                        required
-                                        error={errors.tags?.message}
-                                        placeholder="web design, development, tips"
-                                    />
-                                )}
-                            />
-
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    name="published"
-                                    control={control}
-                                    render={({ field }) => (
-                                        <input
-                                            type="checkbox"
-                                            id="published"
-                                            checked={field.value}
-                                            onChange={(e) => field.onChange(e.target.checked)}
-                                            className="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="published" className="text-sm text-gray-300">
-                                    Publish immediately
-                                </label>
-                            </div>
-
-                            <div className="flex justify-end space-x-3 pt-4">
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setIsModalOpen(false);
-                                        setEditingBlog(null);
-                                        reset();
-                                    }}
-                                    className="px-4 py-2 text-gray-300 hover:text-white transition-colors"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50 transition-colors"
-                                >
-                                    {isSubmitting ? 'Saving...' : (editingBlog ? 'Update Blog' : 'Create Blog')}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <BlogFrom
+                    editingBlog={editingBlog}
+                    handleSubmit={handleSubmit}
+                    onSubmit={onSubmit}
+                    control={control}
+                    errors={errors}
+                    isSubmitting={isSubmitting}
+                    setIsModalOpen={setIsModalOpen}
+                    setEditingBlog={setEditingBlog}
+                    reset={reset}
+                />
             )}
         </div>
     );

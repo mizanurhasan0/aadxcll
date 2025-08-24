@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { user, logout } = useAuth();
-
+  const router = useRouter();
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 10;
@@ -44,23 +45,11 @@ const Navbar = () => {
         <li><a href="#blogs">Blogs</a></li>
         <li><a href="#contact" className="hover:text-success transition-colors">Contact Us</a></li>
         {user ? (
-          <>
-            <li><a href="/dashboard" className="hover:text-success transition-colors">Dashboard</a></li>
-            <li>
-              <button
-                onClick={logout}
-                className="hover:text-success transition-colors"
-              >
-                Logout
-              </button>
-            </li>
-          </>
-        ) : (
-          <li><a href="/auth" className="hover:text-success transition-colors">Login</a></li>
-        )}
+          <li><a href="/dashboard" className="hover:text-success transition-colors">Dashboard</a></li>
+        ) : " "}
       </ul>
-      <button className="relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-500 group">
-        <span className="relative z-10">Start Project</span>
+      <button onClick={() => user ? logout() : router.push('/auth')} className="relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-500 group">
+        <span className="relative z-10">{user ? "Logout" : "Login"}</span>
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/30 via-transparent to-blue-400/30 transform translate-x-full translate-y-[-50%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700 ease-out"></div>
       </button>

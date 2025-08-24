@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import DashboardSidebar from '@/components/dashboard/DashboardSidebar';
 import BlogManagement from '@/components/dashboard/BlogManagement';
 import TeamManagement from '@/components/dashboard/TeamManagement';
+import PackageManagement from '@/components/dashboard/PackageManagement';
+import ProjectManagement from '@/components/dashboard/ProjectManagement';
 import SettingsManagement from '@/components/dashboard/SettingsManagement';
 
 const DashboardPage = () => {
@@ -56,6 +58,10 @@ const DashboardPage = () => {
                 return <BlogManagement />;
             case 'team':
                 return <TeamManagement />;
+            case 'packages':
+                return <PackageManagement />;
+            case 'projects':
+                return <ProjectManagement />;
             case 'settings':
                 return <SettingsManagement />;
             default:
