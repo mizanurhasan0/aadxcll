@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="bg-gray-900 text-white py-12">
+  <footer className="bg-gray-900 text-white py-12 pt-60">
     <div className="max-w-6xl mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div>
@@ -12,7 +12,7 @@ const Footer = () => (
             <li><a href="#" className="hover:text-white transition-colors">Software Development</a></li>
           </ul>
         </div>
-        
+
         <div>
           <h3 className="text-xl font-bold mb-4">Recent Projects</h3>
           <ul className="space-y-2 text-gray-300">
@@ -24,7 +24,7 @@ const Footer = () => (
             <li><a href="#" className="hover:text-white transition-colors">Mobile Crypto Wallet</a></li>
           </ul>
         </div>
-        
+
         <div>
           <h3 className="text-xl font-bold mb-4">Contacts</h3>
           <div className="space-y-2 text-gray-300">
@@ -34,7 +34,7 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      
+
       <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
         <div className="text-gray-400 text-sm mb-4 md:mb-0">
           © 2021. All rights reserved by <span className="font-bold text-white">The CodeGrammer</span>

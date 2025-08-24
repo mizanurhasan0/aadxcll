@@ -22,8 +22,8 @@ const Partners = () => {
     return (
         <section className="py-20 bg-gray-900">
             <div className="max-w-6xl mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-12">
-                    <div className="flex-1 mb-8 lg:mb-0">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-12 space-x-2">
+                    <div className="mb-8 lg:mb-0">
                         <p className="text-emerald-400 font-semibold mb-4 underline underline-offset-8">
                             Satisfied Client
                         </p>
@@ -46,7 +46,7 @@ const Partners = () => {
 
                     <div className="w-px h-32 bg-emerald-400 hidden lg:block"></div>
 
-                    <div className="flex-1">
+                    <div className="flex-1 overflow-x-auto">
                         <div
                             ref={scrollContainerRef}
                             className="flex gap-6 overflow-x-auto scrollbar-hide"
@@ -54,6 +54,10 @@ const Partners = () => {
                         >
                             {[
                                 { name: 'www.egenslab.com', logo: '/projects/partner-1.png' },
+                                { name: 'my life', logo: '/projects/partner-2.png' },
+                                { name: 'abc.com', logo: '/projects/partner-3.png' },
+                                { name: '@tuenti', logo: '/projects/partner-4.png' },
+                                { name: 'ariete', logo: '/projects/partner-5.png' },
                                 { name: 'my life', logo: '/projects/partner-2.png' },
                                 { name: 'abc.com', logo: '/projects/partner-3.png' },
                                 { name: '@tuenti', logo: '/projects/partner-4.png' },

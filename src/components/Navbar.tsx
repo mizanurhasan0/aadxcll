@@ -1,9 +1,11 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +43,21 @@ const Navbar = () => {
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#blogs">Blogs</a></li>
         <li><a href="#contact" className="hover:text-success transition-colors">Contact Us</a></li>
+        {user ? (
+          <>
+            <li><a href="/dashboard" className="hover:text-success transition-colors">Dashboard</a></li>
+            <li>
+              <button
+                onClick={logout}
+                className="hover:text-success transition-colors"
+              >
+                Logout
+              </button>
+            </li>
+          </>
+        ) : (
+          <li><a href="/auth" className="hover:text-success transition-colors">Login</a></li>
+        )}
       </ul>
       <button className="relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-500 group">
         <span className="relative z-10">Start Project</span>

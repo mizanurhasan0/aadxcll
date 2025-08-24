@@ -25,7 +25,7 @@ const blogPosts = [
 ];
 
 const Blog = () => (
-  <section id="blogs" className="py-20 bg-white">
+  <section id="blogs" className="py-20 bg-white pb-40">
     <div className="max-w-6xl mx-auto px-4">
       <div className="text-center mb-16">
         <p className="text-green-400 font-semibold mb-4 underline underline-offset-8">All Blog</p>
