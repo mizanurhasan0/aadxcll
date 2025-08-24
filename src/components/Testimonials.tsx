@@ -24,7 +24,7 @@ const Testimonials = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {testimonials.map((testimonial, idx) => (
           <div key={idx} className="bg-white p-8 rounded-xl shadow-sm">
-            <p className="text-gray-600 mb-6 italic">"{testimonial.testimonial}"</p>
+            <p className="text-gray-600 mb-6 italic">{testimonial.testimonial}</p>
             <div className="flex items-center">
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
                 <span className="text-green-600 font-bold text-lg">

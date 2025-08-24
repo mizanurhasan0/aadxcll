@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [, setIsVisible] = useState(false);
   const [isLeftAnimated, setIsLeftAnimated] = useState(false);
   const [isRightAnimated, setIsRightAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
