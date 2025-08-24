@@ -59,7 +59,7 @@ const services = [
 ];
 
 const Services = () => (
-  <section id="services" className="py-20 bg-gray-50">
+  <section id="services" className="py-20 bg-gray-50 cursor-pointer">
     <div className="max-w-7xl mx-auto px-4">
       <div className="text-center mb-16">
         <p className="text-success font-semibold mb-4 underline underline-offset-8">Our Solutions</p>
@@ -67,7 +67,7 @@ const Services = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, idx) => (
-          <div key={idx} className="text-center p-8 border-2 border-gray-200 text-gray-700 bg-gradient-to-r group hover:from-gray-700 hover:to-gray-800 rounded-xl hover:shadow-lg transition-shadow duration-200 space-y-4">
+          <div key={idx} className="text-center p-8 border-2 border-green-200 text-gray-700 bg-gradient-to-r group hover:from-green-900 hover:to-green-800 rounded-xl hover:shadow-lg transition-shadow duration-200 space-y-4">
             <div className='flex justify-between items-center'>
               {service.icon}
               <div className="text-transparent text-outline text-5xl font-bold opacity-25">{service.number}</div>
@@ -75,7 +75,7 @@ const Services = () => (
             <h3 className="text-2xl font-medium  text-left group-hover:text-white">{service.title}</h3>
             <p className=" mb-6 text-left text-base font-normal leading-7 group-hover:text-white">{service.desc}</p>
             <div className='flex justify-end items-center'>
-              <button className="text-blue-600 font-semibold hover:underline">Read More</button>
+              <button className="text-green-600 font-semibold hover:underline">Read More</button>
             </div>
           </div>
         ))}

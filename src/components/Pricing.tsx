@@ -46,21 +46,21 @@ const Pricing = () => (
   <section id="pricing" className="py-20 bg-gray-50">
     <div className="max-w-6xl mx-auto px-4">
       <div className="text-center mb-16">
-        <p className="text-blue-600 font-semibold mb-4">Getting Start</p>
+        <p className="text-green-400 font-semibold mb-4 underline underline-offset-8">Getting Start</p>
         <h2 className="text-4xl font-bold text-gray-900 mb-6">Pricing Plan</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {plans.map((plan, idx) => (
-          <div key={idx} className={`relative p-8 bg-white rounded-xl shadow-lg ${plan.popular ? 'border-2 border-blue-600' : ''}`}>
+          <div key={idx} className={`relative p-8 bg-white rounded-xl shadow-lg ${plan.popular ? 'border-2 border-green-600' : ''}`}>
             {plan.popular && (
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
                 Popular
               </div>
             )}
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
               <p className="text-gray-600 mb-4">{plan.subtitle}</p>
-              <div className="text-4xl font-bold text-blue-600 mb-4">
+              <div className="text-4xl font-bold text-green-600 mb-4">
                 $ {plan.price}
               </div>
             </div>
@@ -72,7 +72,7 @@ const Pricing = () => (
                 </li>
               ))}
             </ul>
-            <button className="w-full bg-blue-600 text-white py-3 rounded-full hover:bg-blue-700 transition-colors font-semibold">
+            <button className="w-full bg-green-600 text-white py-3 rounded-full hover:bg-green-700 transition-colors font-semibold">
               PAY NOW
             </button>
           </div>

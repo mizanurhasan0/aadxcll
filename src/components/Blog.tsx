@@ -37,7 +37,7 @@ const Blog = () => (
             <img src={post.image} alt={post.title} className="w-full h-48 object-cover" />
             <div className="p-6">
               <div className="flex items-center mb-4">
-                <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold mr-3">
+                <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold mr-3">
                   {post.category}
                 </span>
               </div>
