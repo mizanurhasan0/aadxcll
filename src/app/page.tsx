@@ -5,6 +5,7 @@ import SecondHero from '@/components/SecondHero';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import FunFacts from '@/components/FunFacts';
+import Partners from '@/components/Partners';
 import Portfolio from '@/components/Portfolio';
 import Pricing from '@/components/Pricing';
 import Testimonials from '@/components/Testimonials';
@@ -18,12 +19,13 @@ export default function Home() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <SecondHero />
       <Services />
       <About />
       <FunFacts />
       <Portfolio />
+      <Partners />
       <Pricing />
+      <SecondHero />
       <Testimonials />
       <Team />
       <Blog />

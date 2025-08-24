@@ -5,7 +5,7 @@ const About = () => (
     <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
         <div className="mb-6">
-          <p className="text-blue-600 font-semibold mb-4">Get To Know</p>
+          <p className="text-green-400 font-semibold mb-4 underline underline-offset-8">Get To Know</p>
           <h2 className="text-4xl font-bold text-gray-900 mb-6">About Us</h2>
         </div>
         <h3 className="text-2xl font-semibold text-gray-900 mb-6">
@@ -14,13 +14,21 @@ const About = () => (
         <p className="text-gray-600 mb-8">
           Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos only himenaeos. Praesent nec neque at dolor venenatis consectetur eu quis ex. the Donec lacinia placerat felis non aliquam.
         </p>
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <div className="flex items-center mb-4">
-            <span className="text-3xl font-bold text-blue-600 mr-4">#1</span>
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900">
-                Best Creative IT Agency And Solutions Since 2005.
-              </h4>
+        <div className="bg-gradient-to-br from-emerald-200/60 to-emerald-400/40 p-[1px] rounded-2xl">
+          <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 font-semibold">&lt;/&gt;</span>
+                <span className="text-base font-semibold text-gray-900">The CodeGrammer</span>
+              </div>
+              <span className="text-2xl font-bold text-gray-900">#1</span>
+            </div>
+            <div className="mt-5">
+              <p className="text-2xl md:text-3xl font-semibold leading-snug text-gray-900">
+                Best Creative IT Agency And Solutions
+                <br />
+                <span className="text-emerald-500">Since 2005.</span>
+              </p>
             </div>
           </div>
         </div>

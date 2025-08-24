@@ -1,4 +1,4 @@
-import { Server, TvMinimalPlay, Globe ,Search, ThumbsUp, Video, NotebookPen, FileImage, ShoppingCart} from 'lucide-react';
+import { Server, TvMinimalPlay, Globe, Search, ThumbsUp, Video, NotebookPen, FileImage, ShoppingCart } from 'lucide-react';
 import React from 'react';
 
 const services = [
@@ -42,9 +42,9 @@ const services = [
     number: '07',
     icon: <Server className='w-[70px] h-[70px] text-success' />,
     title: 'Server Side Tracking',
-      desc: 'Server-side tracking collects website data on a dedicated server instead of the user\'s browser, bypassing adblockers & tracking prevention for accurate & uninterrupted data capture.'
-    },
-    {
+    desc: 'Server-side tracking collects website data on a dedicated server instead of the user\'s browser, bypassing adblockers & tracking prevention for accurate & uninterrupted data capture.'
+  },
+  {
     number: '08',
     icon: <FileImage className='w-[70px] h-[70px] text-success' />,
     title: 'Graphic Design',
@@ -59,24 +59,24 @@ const services = [
 ];
 
 const Services = () => (
-  <section id="services" className="py-20">
+  <section id="services" className="py-20 bg-gray-50">
     <div className="max-w-7xl mx-auto px-4">
       <div className="text-center mb-16">
         <p className="text-success font-semibold mb-4 underline underline-offset-8">Our Solutions</p>
-        <h2 className="text-4xl font-bold mb-6">Services</h2>
+        <h2 className="text-4xl font-bold mb-6 text-gray-700">Services</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {services.map((service, idx) => (
-          <div key={idx} className="text-center p-8 bg-gradient-to-r from-gray-700 to-gray-800 rounded-xl hover:shadow-lg transition-shadow duration-200 space-y-4">
-           <div className='flex justify-between items-center'>
-            {service.icon}
-            <div className="text-transparent text-outline text-5xl font-bold opacity-25">{service.number}</div>
-           </div>
-            <h3 className="text-2xl font-medium  text-left text-white">{service.title}</h3>
-            <p className="text-gray-50 mb-6 text-left text-base font-normal leading-7">{service.desc}</p>
-           <div className='flex justify-end items-center'>
-            <button className="text-blue-600 font-semibold hover:underline">Read More</button>
-           </div>
+          <div key={idx} className="text-center p-8 border-2 border-gray-200 text-gray-700 bg-gradient-to-r group hover:from-gray-700 hover:to-gray-800 rounded-xl hover:shadow-lg transition-shadow duration-200 space-y-4">
+            <div className='flex justify-between items-center'>
+              {service.icon}
+              <div className="text-transparent text-outline text-5xl font-bold opacity-25">{service.number}</div>
+            </div>
+            <h3 className="text-2xl font-medium  text-left group-hover:text-white">{service.title}</h3>
+            <p className=" mb-6 text-left text-base font-normal leading-7 group-hover:text-white">{service.desc}</p>
+            <div className='flex justify-end items-center'>
+              <button className="text-blue-600 font-semibold hover:underline">Read More</button>
+            </div>
           </div>
         ))}
       </div>
