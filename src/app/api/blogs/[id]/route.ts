@@ -6,10 +6,11 @@ import { verifyToken } from '@/lib/auth';
 // PUT update blog (admin only)
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -23,7 +24,7 @@ export async function PUT(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
@@ -32,7 +33,7 @@ export async function PUT(
 
         const { title, content, excerpt, image, tags, published } = await request.json();
 
-        const blog = await Blog.findById(params.id);
+        const blog = await Blog.findById(id);
         if (!blog) {
             return NextResponse.json(
                 { error: 'Blog not found' },
@@ -67,10 +68,11 @@ export async function PUT(
 // DELETE blog (admin only)
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -84,14 +86,14 @@ export async function DELETE(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
             );
         }
 
-        const blog = await Blog.findByIdAndDelete(params.id);
+        const blog = await Blog.findByIdAndDelete(id);
         if (!blog) {
             return NextResponse.json(
                 { error: 'Blog not found' },

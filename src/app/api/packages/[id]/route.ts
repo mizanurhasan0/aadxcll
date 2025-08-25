@@ -6,12 +6,13 @@ import { verifyToken } from '@/lib/auth';
 // GET single package
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
-        const packageData = await Package.findById(params.id);
+        const packageData = await Package.findById(id);
 
         if (!packageData) {
             return NextResponse.json(
@@ -33,10 +34,11 @@ export async function GET(
 // PUT update package (admin only)
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -50,7 +52,7 @@ export async function PUT(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
@@ -68,7 +70,7 @@ export async function PUT(
         }
 
         const updatedPackage = await Package.findByIdAndUpdate(
-            params.id,
+            id,
             {
                 name,
                 subtitle,
@@ -108,10 +110,11 @@ export async function PUT(
 // DELETE package (admin only)
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -125,14 +128,14 @@ export async function DELETE(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
             );
         }
 
-        const deletedPackage = await Package.findByIdAndDelete(params.id);
+        const deletedPackage = await Package.findByIdAndDelete(id);
 
         if (!deletedPackage) {
             return NextResponse.json(

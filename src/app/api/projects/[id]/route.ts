@@ -6,12 +6,13 @@ import { verifyToken } from '@/lib/auth';
 // GET single project
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
-        const project = await Project.findById(params.id);
+        const project = await Project.findById(id);
 
         if (!project) {
             return NextResponse.json(
@@ -33,10 +34,11 @@ export async function GET(
 // PUT update project (admin only)
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -50,7 +52,7 @@ export async function PUT(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
@@ -68,7 +70,7 @@ export async function PUT(
         }
 
         const updatedProject = await Project.findByIdAndUpdate(
-            params.id,
+            id,
             {
                 title,
                 category,
@@ -110,10 +112,11 @@ export async function PUT(
 // DELETE project (admin only)
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -127,14 +130,14 @@ export async function DELETE(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
             );
         }
 
-        const deletedProject = await Project.findByIdAndDelete(params.id);
+        const deletedProject = await Project.findByIdAndDelete(id);
 
         if (!deletedProject) {
             return NextResponse.json(

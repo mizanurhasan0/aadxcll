@@ -6,10 +6,11 @@ import { verifyToken } from '@/lib/auth';
 // PUT update team member (admin only)
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -23,7 +24,7 @@ export async function PUT(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
@@ -32,7 +33,7 @@ export async function PUT(
 
         const { name, position, bio, image, email, linkedin, twitter, github, order, active } = await request.json();
 
-        const teamMember = await Team.findById(params.id);
+        const teamMember = await Team.findById(id);
         if (!teamMember) {
             return NextResponse.json(
                 { error: 'Team member not found' },
@@ -71,10 +72,11 @@ export async function PUT(
 // DELETE team member (admin only)
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         await connectDB();
+        const { id } = await params;
 
         // Verify admin token
         const authHeader = request.headers.get('authorization');
@@ -88,14 +90,14 @@ export async function DELETE(
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        if (!decoded || typeof decoded === 'string' || decoded.role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
             );
         }
 
-        const teamMember = await Team.findByIdAndDelete(params.id);
+        const teamMember = await Team.findByIdAndDelete(id);
         if (!teamMember) {
             return NextResponse.json(
                 { error: 'Team member not found' },

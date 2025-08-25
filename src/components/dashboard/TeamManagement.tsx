@@ -14,14 +14,14 @@ interface TeamMember {
     name: string;
     position: string;
     bio: string;
-    image?: string;
+    image?: string | null;
     email: string;
-    linkedin?: string;
-    twitter?: string;
-    github?: string;
+    linkedin?: string | null;
+    twitter?: string | null;
+    github?: string | null;
     order: number;
-    active: boolean;
-    createdAt?: string;
+    active?: boolean | null;
+    createdAt?: string | null;
 }
 
 const TeamManagement: React.FC = () => {
@@ -136,13 +136,13 @@ const TeamManagement: React.FC = () => {
         setValue('name', member.name);
         setValue('position', member.position);
         setValue('bio', member.bio);
-        setValue('image', member.image);
+        setValue('image', member.image || '');
         setValue('email', member.email);
         setValue('linkedin', member.linkedin || '');
         setValue('twitter', member.twitter || '');
         setValue('github', member.github || '');
         setValue('order', member.order);
-        setValue('active', member.active);
+        setValue('active', member.active || false);
         setIsModalOpen(true);
     };
 
@@ -195,7 +195,7 @@ const TeamManagement: React.FC = () => {
                         <div key={member._id} className="bg-gray-700 rounded-lg p-4 flex items-center justify-between">
                             <div className="flex items-center space-x-4">
                                 <img
-                                    src={member.image}
+                                    src={member.image || ''}
                                     alt={member.name}
                                     className="w-16 h-16 object-cover rounded-lg"
                                 />
@@ -270,7 +270,7 @@ const TeamManagement: React.FC = () => {
                             {editingMember ? 'Edit Team Member' : 'Add New Team Member'}
                         </h3>
 
-                        <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-4">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <Controller
                                     name="name"

@@ -39,7 +39,12 @@ export async function POST(request: NextRequest) {
         const token = authHeader.substring(7);
         const decoded = verifyToken(token);
 
-        if (!decoded || decoded.role !== 'admin') {
+        // Handle case where decoded could be string or JwtPayload
+        const role = typeof decoded === 'object' && decoded !== null && 'role' in decoded
+            ? decoded?.role
+            : undefined;
+
+        if (!decoded || role !== 'admin') {
             return NextResponse.json(
                 { error: 'Admin access required' },
                 { status: 403 }
@@ -63,7 +68,7 @@ export async function POST(request: NextRequest) {
             image,
             tags: tags || [],
             published: published || false,
-            author: decoded.userId
+            author: typeof decoded === 'object' && decoded !== null && 'userId' in decoded ? decoded?.userId : undefined
         });
 
         await blog.save();

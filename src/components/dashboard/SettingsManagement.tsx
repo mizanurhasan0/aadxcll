@@ -96,8 +96,7 @@ const SettingsManagement: React.FC = () => {
             const [parent, child] = field.split('.');
             setSettings(prev => ({
                 ...prev,
-                [parent]: {
-                    ...(prev[parent as keyof WebsiteSettings]),
+                [parent]: typeof prev[parent as keyof WebsiteSettings] === 'object' && prev[parent as keyof WebsiteSettings] !== null ? prev[parent as keyof WebsiteSettings] : {
                     [child]: value
                 }
             }));
