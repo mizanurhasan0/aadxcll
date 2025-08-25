@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
             type: file.type
         });
 
-    } catch (error: any) {
+    } catch (error) {
         console.error('Upload error:', error);
         return NextResponse.json(
             { error: 'Internal server error' },

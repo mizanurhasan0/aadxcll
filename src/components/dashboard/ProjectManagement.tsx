@@ -25,6 +25,20 @@ interface Project {
     completedAt: string;
     createdAt: string;
 }
+type TProjectFormData = {
+    title: string;
+    category: string;
+    image: string;
+    description?: string;
+    technologies?: string;
+    client?: string;
+    projectUrl?: string;
+    githubUrl?: string;
+    order: number;
+    featured?: boolean;
+    active?: boolean;
+}
+
 
 const ProjectManagement: React.FC = () => {
     const { token } = useAuth();
@@ -49,7 +63,6 @@ const ProjectManagement: React.FC = () => {
         featured: yup.boolean(),
         active: yup.boolean()
     });
-
     const {
         control,
         handleSubmit,
@@ -95,7 +108,7 @@ const ProjectManagement: React.FC = () => {
         }
     };
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: TProjectFormData) => {
         try {
             const projectData = {
                 ...data,
@@ -345,7 +358,7 @@ const ProjectManagement: React.FC = () => {
                                         label="Description"
                                         name="description"
                                         type="textarea"
-                                        value={field.value}
+                                        value={field.value || ''}
                                         onChange={field.onChange}
                                         error={errors.description?.message}
                                         rows={3}
@@ -361,7 +374,7 @@ const ProjectManagement: React.FC = () => {
                                         label="Technologies (one per line)"
                                         name="technologies"
                                         type="textarea"
-                                        value={field.value}
+                                        value={field.value || ''}
                                         onChange={field.onChange}
                                         error={errors.technologies?.message}
                                         rows={3}
@@ -378,7 +391,7 @@ const ProjectManagement: React.FC = () => {
                                         <FormField
                                             label="Client"
                                             name="client"
-                                            value={field.value}
+                                            value={field.value || ''}
                                             onChange={field.onChange}
                                             error={errors.client?.message}
                                         />
@@ -393,7 +406,7 @@ const ProjectManagement: React.FC = () => {
                                             label="Display Order"
                                             name="order"
                                             type="number"
-                                            value={field.value}
+                                            value={field.value || ''}
                                             onChange={field.onChange}
                                             error={errors.order?.message}
                                             min={0}
@@ -411,7 +424,7 @@ const ProjectManagement: React.FC = () => {
                                             label="Project URL"
                                             name="projectUrl"
                                             type="url"
-                                            value={field.value}
+                                            value={field.value || ''}
                                             onChange={field.onChange}
                                             error={errors.projectUrl?.message}
                                             placeholder="https://example.com"
@@ -427,7 +440,7 @@ const ProjectManagement: React.FC = () => {
                                             label="GitHub URL"
                                             name="githubUrl"
                                             type="url"
-                                            value={field.value}
+                                            value={field.value || ''}
                                             onChange={field.onChange}
                                             error={errors.githubUrl?.message}
                                             placeholder="https://github.com/..."

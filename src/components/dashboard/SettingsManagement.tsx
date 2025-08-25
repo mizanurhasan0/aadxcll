@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { Save, Image, Globe, Mail, Phone, MapPin } from 'lucide-react';
+import { Save, Image, Globe, Mail } from 'lucide-react';
 import { getCookie } from '@/lib/cookies';
 
 interface WebsiteSettings {
@@ -97,7 +97,7 @@ const SettingsManagement: React.FC = () => {
             setSettings(prev => ({
                 ...prev,
                 [parent]: {
-                    ...(prev[parent as keyof WebsiteSettings] as any),
+                    ...(prev[parent as keyof WebsiteSettings]),
                     [child]: value
                 }
             }));

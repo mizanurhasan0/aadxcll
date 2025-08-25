@@ -1,14 +1,11 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { Plus, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Plus, Edit, Trash2 } from 'lucide-react';
 import { getCookie } from '@/lib/cookies';
-import { useForm, Controller } from 'react-hook-form';
+import { Control, UseFormReset, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import ImageUpload from '@/components/shared/ImageUpload';
-import FormField from '@/components/shared/FormField';
-import SimpleTextEditor from '@/components/shared/SimpleTextEditor';
 import BlogFrom from './blogManagement/BlogFrom';
 
 interface Blog {
@@ -29,6 +26,14 @@ const schema = yup.object({
     tags: yup.string().required('Tags are required'),
     published: yup.boolean()
 });
+export type TBlogFormData = {
+    title: string;
+    content: string;
+    excerpt: string;
+    image?: string;
+    tags: string;
+    published?: boolean;
+}
 const BlogManagement: React.FC = () => {
     const { token } = useAuth();
 
@@ -66,6 +71,7 @@ const BlogManagement: React.FC = () => {
     useEffect(() => {
         fetchBlogs();
     }, []);
+
     const handleEdit = (blog: Blog) => {
         setEditingBlog(blog);
         setValue('title', blog.title);
@@ -115,7 +121,7 @@ const BlogManagement: React.FC = () => {
         reset();
         setIsModalOpen(true);
     };
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: TBlogFormData) => {
         // Manual validation for image field
         if (!data.image || data.image.trim() === '') {
             alert('Blog image is required. Please upload an image or enter an image URL.');
@@ -224,12 +230,12 @@ const BlogManagement: React.FC = () => {
                     editingBlog={editingBlog}
                     handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
-                    control={control}
+                    control={control as Control<TBlogFormData>}
                     errors={errors}
                     isSubmitting={isSubmitting}
                     setIsModalOpen={setIsModalOpen}
                     setEditingBlog={setEditingBlog}
-                    reset={reset}
+                    reset={reset as UseFormReset<TBlogFormData>}
                 />
             )}
         </div>

@@ -1,16 +1,30 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { getAllCookies } from '@/lib/cookies';
 
 const DebugAuth: React.FC = () => {
     const { user, token, isLoading } = useAuth();
+    const [cookies, setCookies] = useState<Record<string, string>>({});
+    const [isClient, setIsClient] = useState(false);
 
-    // Get cookies for debugging
-    const cookies = getAllCookies();
+    useEffect(() => {
+        setIsClient(true);
+        setCookies(getAllCookies());
+    }, []);
 
     if (process.env.NODE_ENV === 'production') {
         return null;
+    }
+
+    // Don't render until client-side hydration is complete
+    if (!isClient) {
+        return (
+            <div className="fixed bottom-4 right-4 bg-black/80 text-white p-4 rounded-lg text-xs max-w-xs z-50">
+                <h3 className="font-bold mb-2">Auth Debug</h3>
+                <div>Loading...</div>
+            </div>
+        );
     }
 
     return (

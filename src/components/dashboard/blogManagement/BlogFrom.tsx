@@ -3,19 +3,32 @@ import FormField from '@/components/shared/FormField'
 import ImageUpload from '@/components/shared/ImageUpload'
 import SimpleTextEditor from '@/components/shared/SimpleTextEditor'
 import React from 'react'
-import { Controller, } from 'react-hook-form'
+import { Controller, Control, FieldErrors, UseFormHandleSubmit, UseFormReset } from 'react-hook-form'
+import { TBlogFormData } from '../BlogManagement'
+
+interface Blog {
+    _id: string;
+    title: string;
+    content: string;
+    excerpt: string;
+    image: string;
+    tags: string[];
+    published: boolean;
+    createdAt: string;
+}
 
 type TBlogFrom = {
-    editingBlog: any,
-    handleSubmit: any,
-    onSubmit: any,
-    control: any,
-    errors: any,
-    isSubmitting: any,
-    setIsModalOpen: any,
-    setEditingBlog: any,
-    reset: any
+    editingBlog: Blog | null,
+    handleSubmit: UseFormHandleSubmit<TBlogFormData>,
+    onSubmit: (data: TBlogFormData) => void,
+    control: Control<TBlogFormData>,
+    errors: FieldErrors<TBlogFormData>,
+    isSubmitting: boolean,
+    setIsModalOpen: (open: boolean) => void,
+    setEditingBlog: (blog: Blog | null) => void,
+    reset: UseFormReset<TBlogFormData>
 }
+
 export default function BlogFrom({ editingBlog, handleSubmit, onSubmit, control, errors, isSubmitting, setIsModalOpen, setEditingBlog, reset }: TBlogFrom) {
 
     return (
@@ -144,7 +157,6 @@ export default function BlogFrom({ editingBlog, handleSubmit, onSubmit, control,
                             </button>
                         </div>
                     </div>
-
 
 
 

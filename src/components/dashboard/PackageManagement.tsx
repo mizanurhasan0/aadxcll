@@ -21,7 +21,13 @@ interface Package {
     active: boolean;
     createdAt: string;
 }
-
+type TPackageFormData = {
+    name: string;
+    subtitle: string;
+    price: number;
+    currency: string;
+    features: string;
+}
 const PackageManagement: React.FC = () => {
     const { token } = useAuth();
 
@@ -87,7 +93,7 @@ const PackageManagement: React.FC = () => {
         }
     };
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: TPackageFormData) => {
         try {
             const packageData = {
                 ...data,
@@ -302,7 +308,6 @@ const PackageManagement: React.FC = () => {
                                             required
                                             error={errors.price?.message}
                                             min={0}
-                                            step={0.01}
                                         />
                                     )}
                                 />
@@ -365,7 +370,7 @@ const PackageManagement: React.FC = () => {
                                         label="Description"
                                         name="description"
                                         type="textarea"
-                                        value={field.value}
+                                        value={field.value || ''}
                                         onChange={field.onChange}
                                         error={errors.description?.message}
                                         rows={3}

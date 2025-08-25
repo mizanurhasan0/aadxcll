@@ -17,7 +17,7 @@ const globalWithMongoose = global as typeof globalThis & {
     _mongooseCache?: MongooseCache;
 };
 
-let cached: MongooseCache = globalWithMongoose._mongooseCache || { conn: null, promise: null };
+const cached: MongooseCache = globalWithMongoose._mongooseCache || { conn: null, promise: null };
 
 if (!globalWithMongoose._mongooseCache) {
     globalWithMongoose._mongooseCache = cached;

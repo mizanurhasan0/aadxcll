@@ -10,18 +10,18 @@ import ImageUpload from '@/components/shared/ImageUpload';
 import FormField from '@/components/shared/FormField';
 
 interface TeamMember {
-    _id: string;
+    _id?: string;
     name: string;
     position: string;
     bio: string;
-    image: string;
+    image?: string;
     email: string;
     linkedin?: string;
     twitter?: string;
     github?: string;
     order: number;
     active: boolean;
-    createdAt: string;
+    createdAt?: string;
 }
 
 const TeamManagement: React.FC = () => {
@@ -91,7 +91,7 @@ const TeamManagement: React.FC = () => {
         }
     };
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: TeamMember) => {
         // Manual validation for image field
         if (!data.image || data.image.trim() === '') {
             alert('Profile image is required. Please upload an image or enter an image URL.');
@@ -246,7 +246,7 @@ const TeamManagement: React.FC = () => {
                                     <Edit className="w-4 h-4" />
                                 </button>
                                 <button
-                                    onClick={() => handleDelete(member._id)}
+                                    onClick={() => handleDelete(member._id || '')}
                                     className="p-2 bg-red-600 hover:bg-red-700 rounded-lg text-white transition-colors"
                                 >
                                     <Trash2 className="w-4 h-4" />
@@ -270,7 +270,7 @@ const TeamManagement: React.FC = () => {
                             {editingMember ? 'Edit Team Member' : 'Add New Team Member'}
                         </h3>
 
-                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                        <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <Controller
                                     name="name"
