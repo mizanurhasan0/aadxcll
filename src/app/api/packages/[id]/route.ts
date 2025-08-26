@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
-import Package from '@/models/Package';
+import { Package } from '@/models';
 import { verifyToken } from '@/lib/auth';
 
 // GET single package

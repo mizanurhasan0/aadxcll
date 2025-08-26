@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
-import Team from '@/models/Team';
+import { Team } from '@/models';
 import { verifyToken } from '@/lib/auth';
 
 // PUT update team member (admin only)

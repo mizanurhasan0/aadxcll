@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
-import Blog from '@/models/Blog';
+import { Blog } from '@/models';
 import { verifyToken } from '@/lib/auth';
 
 // PUT update blog (admin only)

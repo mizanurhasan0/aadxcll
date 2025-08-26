@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
-import Settings from '@/models/Settings';
+import { Settings } from '@/models';
 import { verifyToken } from '@/lib/auth';
 
 // GET settings
