@@ -9,7 +9,9 @@ import { TBlogFrom } from './TypeBlogManagement';
 // Helper component to reduce repetition
 interface FormControllerProps {
     name: string;
-    control: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    control: any; // This is from react-hook-form, keeping as any for compatibility
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     children: (props: { value: any; onChange: any }) => React.ReactElement;
 }
 

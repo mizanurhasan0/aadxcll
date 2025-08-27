@@ -23,7 +23,7 @@ export const generateToken = (userId: string, role: string): string => {
 export const verifyToken = (token: string) => {
     try {
         return jwt.verify(token, JWT_SECRET);
-    } catch (error) {
+    } catch {
         return null;
     }
 };

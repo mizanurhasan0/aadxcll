@@ -1,7 +1,7 @@
 import { apiRequest } from '@/utils/api';
 import { TBlog, TBlogFormData } from '@/components/dashboard/blogManagement/TypeBlogManagement';
 
-export interface BlogServiceResponse<T = any> {
+export interface BlogServiceResponse<T = unknown> {
     data: T | null;
     error: string | null;
     success: boolean;

@@ -1,11 +1,11 @@
 interface ApiConfig {
     method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
     headers?: Record<string, string>;
-    body?: any;
+    body?: unknown;
     token?: string;
 }
 
-interface ApiResponse<T = any> {
+interface ApiResponse<T = unknown> {
     data: T | null;
     error: string | null;
     success: boolean;
@@ -18,7 +18,7 @@ class ApiError extends Error {
     }
 }
 
-export const apiRequest = async <T = any>(
+export const apiRequest = async <T = unknown>(
     url: string,
     config: ApiConfig = {}
 ): Promise<ApiResponse<T>> => {
