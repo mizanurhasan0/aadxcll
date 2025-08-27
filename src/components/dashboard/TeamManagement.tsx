@@ -8,6 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import ImageUpload from '@/components/shared/ImageUpload';
 import FormField from '@/components/shared/FormField';
+import { useToaster } from '../shared/useToaster';
+import Toaster from '../shared/Toaster';
 
 interface TeamMember {
     _id?: string;
@@ -26,6 +28,7 @@ interface TeamMember {
 
 const TeamManagement: React.FC = () => {
     const { token } = useAuth();
+    const { toasts, removeToast, showSuccess, showError, showWarning } = useToaster();
 
     // Get token from cookies if not in context
     const getAuthToken = () => {
@@ -94,7 +97,7 @@ const TeamManagement: React.FC = () => {
     const onSubmit = async (data: TeamMember) => {
         // Manual validation for image field
         if (!data.image || data.image.trim() === '') {
-            alert('Profile image is required. Please upload an image or enter an image URL.');
+            showWarning('Profile image is required. Please upload an image or enter an image URL.');
             return;
         }
 
@@ -117,17 +120,18 @@ const TeamManagement: React.FC = () => {
             });
 
             if (response.ok) {
+                showSuccess(editingMember ? 'Team member updated successfully' : 'Team member created successfully');
                 setIsModalOpen(false);
                 setEditingMember(null);
                 reset();
                 fetchTeamMembers();
             } else {
                 const error = await response.json();
-                alert(`Error: ${error.error}`);
+                showError(`Error: ${error.error}`);
             }
         } catch (error) {
             console.error('Error saving team member:', error);
-            alert('An error occurred while saving the team member');
+            showError('An error occurred while saving the team member');
         }
     };
 
@@ -158,14 +162,15 @@ const TeamManagement: React.FC = () => {
             });
 
             if (response.ok) {
+                showSuccess('Team member deleted successfully');
                 fetchTeamMembers();
             } else {
                 const error = await response.json();
-                alert(`Error: ${error.error}`);
+                showError(`Error: ${error.error}`);
             }
         } catch (error) {
             console.error('Error deleting team member:', error);
-            alert('An error occurred while deleting the team member');
+            showError('An error occurred while deleting the team member');
         }
     };
 
@@ -177,6 +182,7 @@ const TeamManagement: React.FC = () => {
 
     return (
         <div className="space-y-6">
+            <Toaster toasts={toasts} removeToast={removeToast} />
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-white">Team Management</h2>
                 <button

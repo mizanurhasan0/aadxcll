@@ -8,6 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import FormField from '@/components/shared/FormField';
 import ImageUpload from '@/components/shared/ImageUpload';
+import { useToaster } from '../shared/useToaster';
+import Toaster from '../shared/Toaster';
 
 interface Project {
     _id: string;
@@ -42,6 +44,7 @@ type TProjectFormData = {
 
 const ProjectManagement: React.FC = () => {
     const { token } = useAuth();
+    const { toasts, removeToast, showSuccess, showError, showWarning } = useToaster();
 
     // Get token from cookies if not in context
     const getAuthToken = () => {
@@ -128,17 +131,18 @@ const ProjectManagement: React.FC = () => {
             });
 
             if (response.ok) {
+                showSuccess(editingProject ? 'Project updated successfully' : 'Project created successfully');
                 setIsModalOpen(false);
                 setEditingProject(null);
                 reset();
                 fetchProjects();
             } else {
                 const error = await response.json();
-                alert(`Error: ${error.error}`);
+                showError(`Error: ${error.error}`);
             }
         } catch (error) {
             console.error('Error saving project:', error);
-            alert('An error occurred while saving the project');
+            showError('An error occurred while saving the project');
         }
     };
 
@@ -170,14 +174,15 @@ const ProjectManagement: React.FC = () => {
             });
 
             if (response.ok) {
+                showSuccess('Project deleted successfully');
                 fetchProjects();
             } else {
                 const error = await response.json();
-                alert(`Error: ${error.error}`);
+                showError(`Error: ${error.error}`);
             }
         } catch (error) {
             console.error('Error deleting project:', error);
-            alert('An error occurred while deleting the project');
+            showError('An error occurred while deleting the project');
         }
     };
 
@@ -189,6 +194,7 @@ const ProjectManagement: React.FC = () => {
 
     return (
         <div className="space-y-6">
+            <Toaster toasts={toasts} removeToast={removeToast} />
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-white">Project Management</h2>
                 <button

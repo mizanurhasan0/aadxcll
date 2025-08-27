@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
+import { useToaster } from '@/components/shared/useToaster';
+import Toaster from '@/components/shared/Toaster';
 
 const AuthPage = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -16,6 +18,7 @@ const AuthPage = () => {
 
     const { login, register, user, isLoading: authLoading } = useAuth();
     const router = useRouter();
+    const { toasts, removeToast, showSuccess, showError, showInfo } = useToaster();
 
     console.log('AuthPage render - user:', user, 'authLoading:', authLoading);
 
@@ -81,7 +84,7 @@ const AuthPage = () => {
                     setError('');
                     setIsLogin(true);
                     setFormData({ username: '', email: '', password: '', confirmPassword: '' });
-                    alert('Registration successful! Please login.');
+                    showSuccess('Registration successful! Please login.');
                 } else {
                     setError('Registration failed. Please try again.');
                 }
@@ -109,6 +112,7 @@ const AuthPage = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center px-4">
+            <Toaster toasts={toasts} removeToast={removeToast} />
             <div className="max-w-md w-full space-y-8">
                 <div className="text-center">
                     <h2 className="text-3xl font-bold text-white">

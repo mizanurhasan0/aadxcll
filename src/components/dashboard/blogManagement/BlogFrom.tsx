@@ -1,35 +1,32 @@
 
+import React from 'react'
 import FormField from '@/components/shared/FormField'
 import ImageUpload from '@/components/shared/ImageUpload'
 import SimpleTextEditor from '@/components/shared/SimpleTextEditor'
-import React from 'react'
-import { Controller, Control, FieldErrors, UseFormHandleSubmit, UseFormReset } from 'react-hook-form'
-import { TBlogFormData } from '../BlogManagement'
+import { Controller } from 'react-hook-form';
+import { TBlogFrom } from './TypeBlogManagement';
 
-interface Blog {
-    _id: string;
-    title: string;
-    content: string;
-    excerpt: string;
-    image: string;
-    tags: string[];
-    published: boolean;
-    createdAt: string;
+// Helper component to reduce repetition
+interface FormControllerProps {
+    name: string;
+    control: any;
+    children: (props: { value: any; onChange: any }) => React.ReactElement;
 }
 
-type TBlogFrom = {
-    editingBlog: Blog | null,
-    handleSubmit: UseFormHandleSubmit<TBlogFormData>,
-    onSubmit: (data: TBlogFormData) => void,
-    control: Control<TBlogFormData>,
-    errors: FieldErrors<TBlogFormData>,
-    isSubmitting: boolean,
-    setIsModalOpen: (open: boolean) => void,
-    setEditingBlog: (blog: Blog | null) => void,
-    reset: UseFormReset<TBlogFormData>
-}
+const FormController = ({ name, control, children }: FormControllerProps) => (
+    <Controller
+        name={name}
+        control={control}
+        render={({ field }) => children({ value: field.value, onChange: field.onChange })}
+    />
+);
 
 export default function BlogFrom({ editingBlog, handleSubmit, onSubmit, control, errors, isSubmitting, setIsModalOpen, setEditingBlog, reset }: TBlogFrom) {
+    const handleClose = () => {
+        setIsModalOpen(false);
+        setEditingBlog(null);
+        reset();
+    };
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -39,111 +36,97 @@ export default function BlogFrom({ editingBlog, handleSubmit, onSubmit, control,
                 </h3>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 grid grid-cols-3 gap-4">
-                    <Controller
-                        name="title"
-                        control={control}
-                        render={({ field }) => (
+                    <FormController name="title" control={control}>
+                        {({ value, onChange }) => (
                             <FormField
                                 label="Title"
                                 name="title"
-                                value={field.value}
-                                onChange={field.onChange}
+                                value={value}
+                                onChange={onChange}
                                 required
                                 error={errors.title?.message}
                             />
                         )}
-                    />
-                    <Controller
-                        name="excerpt"
-                        control={control}
-                        render={({ field }) => (
+                    </FormController>
+
+                    <FormController name="excerpt" control={control}>
+                        {({ value, onChange }) => (
                             <FormField
                                 label="Excerpt"
                                 name="excerpt"
                                 type="text"
-                                value={field.value}
-                                onChange={field.onChange}
+                                value={value || ''}
+                                onChange={onChange}
                                 required
                                 error={errors.excerpt?.message}
                                 rows={3}
                             />
                         )}
-                    />
-                    <Controller
-                        name="tags"
-                        control={control}
-                        render={({ field }) => (
+                    </FormController>
+
+                    <FormController name="tags" control={control}>
+                        {({ value, onChange }) => (
                             <FormField
                                 label="Tags (comma-separated)"
                                 name="tags"
-                                value={field.value}
-                                onChange={field.onChange}
+                                value={value}
+                                onChange={onChange}
                                 required
                                 error={errors.tags?.message}
                                 placeholder="web design, development, tips"
                             />
                         )}
-                    />
+                    </FormController>
+
                     <div className='col-span-2'>
-                        <Controller
-                            name="content"
-                            control={control}
-                            render={({ field }) => (
+                        <FormController name="content" control={control}>
+                            {({ value, onChange }) => (
                                 <SimpleTextEditor
-                                    value={field.value}
-                                    onChange={field.onChange}
+                                    value={value}
+                                    onChange={onChange}
                                     label="Content"
                                     required
                                     error={errors.content?.message}
-
                                 />
                             )}
-                        />
+                        </FormController>
                     </div>
 
-
-
                     <div className='space-y-6'>
-                        <Controller
-                            name="image"
-                            control={control}
-                            render={({ field }) => (
+                        <FormController name="image" control={control}>
+                            {({ value, onChange }) => (
                                 <ImageUpload
-                                    currentImage={field.value}
-                                    onImageChange={field.onChange}
+                                    currentImage={value}
+                                    onImageChange={onChange}
                                     label="Blog Image"
-                                    required={editingBlog ? false : true} // Make image optional for new blogs
+                                    required={!editingBlog}
                                     error={errors.image?.message}
                                     touched={isSubmitting || Object.keys(errors).length > 0}
                                 />
                             )}
-                        />
+                        </FormController>
+
                         <div className="flex items-center space-x-2">
-                            <Controller
-                                name="published"
-                                control={control}
-                                render={({ field }) => (
+                            <FormController name="published" control={control}>
+                                {({ value, onChange }) => (
                                     <input
                                         type="checkbox"
                                         id="published"
-                                        checked={field.value}
-                                        onChange={(e) => field.onChange(e.target.checked)}
+                                        checked={value}
+                                        onChange={(e) => onChange(e.target.checked)}
                                         className="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
                                     />
                                 )}
-                            />
+                            </FormController>
                             <label htmlFor="published" className="text-sm text-gray-300">
                                 Publish immediately
                             </label>
                         </div>
-                        <div className="flex justify-end space-x-3 ">
+
+                        <div className="flex justify-end space-x-3">
                             <button
                                 type="button"
-                                onClick={() => {
-                                    setIsModalOpen(false);
-                                    setEditingBlog(null);
-                                    reset();
-                                }}
+                                onClick={handleClose}
                                 className="px-4 py-2 text-gray-300 hover:text-white transition-colors"
                             >
                                 Cancel
@@ -157,10 +140,6 @@ export default function BlogFrom({ editingBlog, handleSubmit, onSubmit, control,
                             </button>
                         </div>
                     </div>
-
-
-
-
                 </form>
             </div>
         </div>

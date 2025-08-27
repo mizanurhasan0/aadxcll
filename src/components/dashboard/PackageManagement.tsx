@@ -7,6 +7,8 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import FormField from '@/components/shared/FormField';
+import { useToaster } from '../shared/useToaster';
+import Toaster from '../shared/Toaster';
 
 interface Package {
     _id: string;
@@ -30,6 +32,7 @@ type TPackageFormData = {
 }
 const PackageManagement: React.FC = () => {
     const { token } = useAuth();
+    const { toasts, removeToast, showSuccess, showError, showWarning } = useToaster();
 
     // Get token from cookies if not in context
     const getAuthToken = () => {
@@ -114,17 +117,18 @@ const PackageManagement: React.FC = () => {
             });
 
             if (response.ok) {
+                showSuccess(editingPackage ? 'Package updated successfully' : 'Package created successfully');
                 setIsModalOpen(false);
                 setEditingPackage(null);
                 reset();
                 fetchPackages();
             } else {
                 const error = await response.json();
-                alert(`Error: ${error.error}`);
+                showError(`Error: ${error.error}`);
             }
         } catch (error) {
             console.error('Error saving package:', error);
-            alert('An error occurred while saving the package');
+            showError('An error occurred while saving the package');
         }
     };
 
@@ -154,14 +158,15 @@ const PackageManagement: React.FC = () => {
             });
 
             if (response.ok) {
+                showSuccess('Package deleted successfully');
                 fetchPackages();
             } else {
                 const error = await response.json();
-                alert(`Error: ${error.error}`);
+                showError(`Error: ${error.error}`);
             }
         } catch (error) {
-            console.error('Error deleting package:', error);
-            alert('An error occurred while deleting the package');
+                console.error('Error deleting package:', error);
+                showError('An error occurred while deleting the package');
         }
     };
 
@@ -173,6 +178,7 @@ const PackageManagement: React.FC = () => {
 
     return (
         <div className="space-y-6">
+            <Toaster toasts={toasts} removeToast={removeToast} />
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-white">Package Management</h2>
                 <button
