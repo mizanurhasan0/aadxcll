@@ -3,6 +3,42 @@ import connectDB from '@/lib/mongodb';
 import { Blog } from '@/models';
 import { verifyToken } from '@/lib/auth';
 
+// GET individual blog post (public)
+export async function GET(
+    request: NextRequest,
+    { params }: { params: Promise<{ id: string }> }
+) {
+    try {
+        await connectDB();
+        const { id } = await params;
+
+        const blog = await Blog.findById(id).populate('author', 'username');
+        if (!blog) {
+            return NextResponse.json(
+                { error: 'Blog not found' },
+                { status: 404 }
+            );
+        }
+
+        // Only return published blogs for public access
+        if (!blog.published) {
+            return NextResponse.json(
+                { error: 'Blog not found' },
+                { status: 404 }
+            );
+        }
+
+        return NextResponse.json(blog);
+
+    } catch (error) {
+        console.error('Get blog error:', error);
+        return NextResponse.json(
+            { error: 'Internal server error' },
+            { status: 500 }
+        );
+    }
+}
+
 // PUT update blog (admin only)
 export async function PUT(
     request: NextRequest,

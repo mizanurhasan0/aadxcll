@@ -23,7 +23,7 @@ const PricingPage = () => {
     if (error) {
         return (
             <HeaderPricing>
-                <NotFound error={error} fetchPackages={fetchPackages} />
+                <NotFound error={error} onRetry={fetchPackages} />
             </HeaderPricing>
         );
     }

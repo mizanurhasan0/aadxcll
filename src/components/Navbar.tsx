@@ -43,6 +43,7 @@ const Navbar = () => {
         <li><a href="#projects">Projects</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#blogs">Blogs</a></li>
+        <li><a href="/blogs" className="hover:text-success transition-colors">All Blogs</a></li>
         <li><a href="#contact" className="hover:text-success transition-colors">Contact Us</a></li>
         {user ? (
           <li><a href="/dashboard" className="hover:text-success transition-colors">Dashboard</a></li>

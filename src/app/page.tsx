@@ -11,7 +11,7 @@ import Portfolio from '@/components/portfolio/Portfolio';
 import Pricing from '@/components/pricing/Pricing';
 import Testimonials from '@/components/Testimonials';
 import Team from '@/components/Team';
-import Blog from '@/components/Blog';
+import Blog from '@/components/blog/Blog';
 import Footer from '@/components/Footer';
 
 export default function Home() {
