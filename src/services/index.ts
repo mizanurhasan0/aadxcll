@@ -2,3 +2,7 @@ export { BlogService } from './blogService';
 export type { BlogServiceResponse } from './blogService';
 export { PortfolioService } from './portfolioService';
 export type { PortfolioServiceResponse } from './portfolioService';
+export { TeamService } from './teamService';
+export type { TeamServiceResponse } from './teamService';
+export { PackageService } from './packageService';
+export type { PackageServiceResponse } from './packageService';
