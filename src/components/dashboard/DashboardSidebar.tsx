@@ -60,7 +60,7 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ activeTab, onTabCha
     ];
 
     return (
-        <div className="w-64 bg-gray-800 min-h-screen p-6">
+        <div className="w-64 bg-gray-800 h-full p-6 overflow-y-auto">
             <div className="mb-8">
                 <h2 className="text-2xl font-bold text-white">Admin Panel</h2>
                 <p className="text-gray-400 text-sm">Content Management System</p>
