@@ -6,3 +6,5 @@ export { TeamService } from './teamService';
 export type { TeamServiceResponse } from './teamService';
 export { PackageService } from './packageService';
 export type { PackageServiceResponse } from './packageService';
+export { ServiceService } from './serviceService';
+export type { Service } from './serviceService';
