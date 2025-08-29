@@ -8,7 +8,7 @@ import FunFacts from '@/components/FunFacts';
 import Partners from '@/components/Partners';
 import Newsletter from '@/components/Newsletter';
 import Portfolio from '@/components/portfolio/Portfolio';
-import Pricing from '@/components/Pricing';
+import Pricing from '@/components/pricing/Pricing';
 import Testimonials from '@/components/Testimonials';
 import Team from '@/components/Team';
 import Blog from '@/components/Blog';
