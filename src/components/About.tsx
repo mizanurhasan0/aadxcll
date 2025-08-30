@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const About = () => {
   const [, setIsVisible] = useState(false);
@@ -43,44 +44,47 @@ const About = () => {
   return (
     <section ref={sectionRef} id="about" className="py-20 bg-gray-50 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Main content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Left side - Text content with left animation */}
-          <div className={`transition-all duration-1000 transform ${isLeftAnimated ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+        <div className="text-center">
+          <p className={`text-primary font-semibold mb-4 underline underline-offset-8 transition-all duration-700 delay-200 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}>
-            <div className="mb-6">
-              <p className={`text-green-400 font-semibold mb-4 underline underline-offset-8 transition-all duration-700 delay-200 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                }`}>
-                Get To Know
-              </p>
-              <h2 className={`text-4xl font-bold text-gray-900 mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                }`}>
-                About Us
-              </h2>
-            </div>
-            <h3 className={`text-2xl font-semibold text-gray-900 mb-6 transition-all duration-700 delay-400 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            Get To Know
+          </p>
+          <h2 className={`text-4xl font-bold text-font-color mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}>
+            About Us
+          </h2>
+        </div>
+        {/* Main content grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-16">
+          {/* Left side - Text content with left animation */}
+          <div className={`transition-all duration-1000 transform space-y-4 ${isLeftAnimated ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'
+            }`}>
+
+            <h3 className={`text-2xl font-semibold text-gray-900  transition-all duration-700 delay-400 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
               }`}>
-              We Do Design, Code & Develop Software Finally Launch.
+              Full-Service Digital Marketing Agency- Grow Your Business Online.
             </h3>
-            <p className={`text-gray-600 mb-8 transition-all duration-700 delay-500 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            <p className={`text-gray-600  transition-all duration-700 delay-500 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
               }`}>
-              Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos only himenaeos. Praesent nec neque at dolor venenatis consectetur eu quis ex. the Donec lacinia placerat felis non aliquam.
+              As your trusted partner, Aaxcel will provide full-service digital marketing, that will solve every brand’s digital need. From creating targeted SEO strategies to managing dynamic social media campaigns, executing precise PPC ads, unique design & developing customized websites. We develop growth-oriented internet marketing services that build your business towards measurable success.
             </p>
-            <div className={`bg-gradient-to-br from-emerald-200/60 to-emerald-400/40 p-[1px] rounded-2xl transition-all duration-700 delay-600 transform ${isLeftAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-95'
+            <div className={`bg-gradient-to-br from-primary/60 to-primary/40 p-[1px] rounded-2xl transition-all duration-700 delay-600 transform ${isLeftAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-95'
               }`}>
               <div className="bg-white rounded-2xl p-6 shadow-sm">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 font-semibold">&lt;/&gt;</span>
-                    <span className="text-base font-semibold text-gray-900">The CodeGrammer</span>
+                    <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold overflow-hidden">
+                      <Image src="/projects/logo.png" alt="Aadxcel" width={36} height={36} />
+                    </div>
+                    <span className="text-base font-semibold text-gray-900">The Aadxcel</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">#1</span>
+                  <span className="text-2xl font-bold text-primary">#1</span>
                 </div>
-                <div className="mt-5">
-                  <p className="text-2xl md:text-3xl font-semibold leading-snug text-gray-900">
+                <div className="mt-3">
+                  <p className="text-xl md:text-2xl font-semibold leading-snug text-font-color">
                     Best Creative IT Agency And Solutions
                     <br />
-                    <span className="text-emerald-500">Since 2005.</span>
+                    <span className="text-primary text-lg md:text-xl">Since 2005.</span>
                   </p>
                 </div>
               </div>
@@ -108,7 +112,7 @@ const About = () => {
 
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-transparent bg-opacity-20 hover:bg-opacity-30 transition-all">
-                  <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
                     <div className="w-0 h-0 border-l-[12px] border-l-white border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
                   </div>
                 </div>

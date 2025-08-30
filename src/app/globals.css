@@ -57,6 +57,7 @@
   --color-primary-hover: var(--color-primary-hover);
   --color-success: var(--color-success);
   --color-success-hover: var(--color-success-hover);
+  --color-font-Color: var(--color-font-Color);
 
   /* Background colors */
   --color-bg: var(--color-bg);
