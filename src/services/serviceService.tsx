@@ -1,4 +1,3 @@
-import { Server, TvMinimalPlay, Globe, Search, ThumbsUp, Video, NotebookPen, FileImage, ShoppingCart } from 'lucide-react';
 
 export interface Service {
     id: string;
