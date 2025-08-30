@@ -54,7 +54,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ targetEmail = 'info@aadxcel.c
         <div className={`bg-white rounded-xl shadow-lg p-6 md:p-8 ${className}`}>
             <div className="text-center mb-6">
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Get In Touch</h3>
-                <p className="text-gray-600">Send us a message and we'll get back to you</p>
+                <p className="text-gray-600">Send us a message and we will get back to you</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -145,7 +145,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ targetEmail = 'info@aadxcel.c
             </form>
 
             <div className="mt-6 text-center text-sm text-gray-500">
-                <p>We'll respond to your message within 24 hours</p>
+                <p>We will respond to your message within 24 hours</p>
             </div>
         </div>
     );

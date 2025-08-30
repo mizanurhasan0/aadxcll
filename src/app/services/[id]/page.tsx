@@ -17,7 +17,7 @@ const ServiceDetailsPage = () => {
             <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-gray-900 mb-4">Service Not Found</h1>
-                    <p className="text-gray-600 mb-6">The service you're looking for doesn't exist.</p>
+                    <p className="text-gray-600 mb-6">The service you are looking for does not exist.</p>
                     <Link
                         href="/services"
                         className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
@@ -163,7 +163,7 @@ const ServiceDetailsPage = () => {
                         <div className="bg-white rounded-xl shadow-lg p-6">
                             <h3 className="text-xl font-bold text-gray-900 mb-4">Get Started Today</h3>
                             <p className="text-gray-600 mb-6">
-                                Ready to take your business to the next level? Let's discuss how we can help you achieve your goals.
+                                Ready to take your business to the next level? Let\'s discuss how we can help you achieve your goals.
                             </p>
                             <Link
                                 href="/contact"
@@ -234,7 +234,7 @@ const ServiceDetailsPage = () => {
                     <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-xl p-8 text-white">
                         <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
                         <p className="text-xl mb-6 opacity-90">
-                            Let's discuss how our {service.title} service can help your business grow.
+                            Let\'s discuss how our {service.title} service can help your business grow.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
