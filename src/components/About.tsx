@@ -81,7 +81,7 @@ const About = () => {
                   <span className="text-2xl font-bold text-primary">#1</span>
                 </div>
                 <div className="mt-3">
-                  <p className="text-xl md:text-2xl font-semibold leading-snug text-text-inverse">
+                  <p className="text-xl md:text-2xl font-semibold leading-snug text-text">
                     Best Creative IT Agency And Solutions
                     <br />
                     <span className="text-primary text-lg md:text-xl">Since 2005.</span>

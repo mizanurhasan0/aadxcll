@@ -47,10 +47,18 @@ const Navbar = () => {
     { href: "/about", label: "About Us" },
     { href: "/services", label: "Services" },
     { href: "/portfolio", label: "Projects" },
-    { href: "/pricing", label: "Pricing" },
-    { href: "/blogs", label: "All Blogs" },
+    { href: "/pricing", label: "Packages" },
+    { href: "/blogs", label: "Blogs" },
     { href: "/contact", label: "Contact Us" },
   ];
+
+  // Check if a link is active
+  const isActiveLink = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
 
   // Don't render until mounted
   if (!mounted) {
@@ -88,17 +96,29 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-text-inverse"
+                  className={`relative transition-colors duration-200 text-base font-medium ${isActiveLink(link.href)
+                    ? 'text-primary font-semibold'
+                    : 'text-text-inverse hover:text-primary'
+                    }`}
                 >
                   {link.label}
+                  {isActiveLink(link.href) && (
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"></div>
+                  )}
                 </Link>
               ))}
               {user && (
                 <Link
                   href="/dashboard"
-                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-text-inverse"
+                  className={`relative transition-colors duration-200 text-base font-medium ${pathname === '/dashboard'
+                    ? 'text-primary font-semibold'
+                    : 'text-text-inverse hover:text-primary'
+                    }`}
                 >
                   Dashboard
+                  {pathname === '/dashboard' && (
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"></div>
+                  )}
                 </Link>
               )}
             </div>
@@ -150,7 +170,10 @@ const Navbar = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-text-inverse"
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${isActiveLink(link.href)
+                ? 'text-primary font-semibold bg-primary/10 border-l-4 border-primary'
+                : 'text-text-inverse hover:text-primary hover:bg-white/10'
+                }`}
             >
               {link.label}
             </Link>
@@ -158,7 +181,10 @@ const Navbar = () => {
           {user && (
             <Link
               href="/dashboard"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-text-inverse"
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${pathname === '/dashboard'
+                ? 'text-primary font-semibold bg-primary/10 border-l-4 border-primary'
+                : 'text-text-inverse hover:text-primary hover:bg-white/10'
+                }`}
             >
               Dashboard
             </Link>
