@@ -18,10 +18,10 @@ export default function ShowMoreCard({ totalProjects, visibleProjects }: ShowMor
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-600 group-hover:text-textmuted mb-2 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-gray-600 group-hover:text-text-muted mb-2 transition-colors duration-300">
                         Show More
                     </h3>
-                    <p className="text-sm text-gray-500 group-hover:text-textmuted mb-6 transition-colors duration-300">
+                    <p className="text-sm text-gray-500 group-hover:text-text-muted mb-6 transition-colors duration-300">
                         {remainingProjects} more project{remainingProjects !== 1 ? 's' : ''} to explore
                     </p>
                     <Button

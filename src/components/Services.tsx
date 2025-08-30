@@ -76,13 +76,13 @@ const Services = () => {
         <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
           <p className="font-semibold mb-4 underline underline-offset-8 transition-colors duration-300 text-primary">Our Solutions</p>
-          <h2 className="text-4xl font-bold mb-6 duration-300 text-textColor">Services</h2>
+          <h2 className="text-4xl font-bold mb-6 duration-300 text-text">Services</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, idx) => (
             <div
               key={service.id}
-              className={`text-center px-8 p-4 border-2 rounded-xl hover:shadow-lg transition-all duration-700 transform cursor-pointer bg-bgcard border-primary text-textColor ${animatedCards.includes(idx)
+              className={`text-center px-8 p-4 border-2 rounded-xl hover:shadow-lg transition-all duration-700 transform cursor-pointer bg-bg-card border-primary text-text ${animatedCards.includes(idx)
                 ? 'translate-y-0 opacity-100 scale-100'
                 : 'translate-y-12 opacity-0 scale-95'
                 }`}

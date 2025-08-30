@@ -14,7 +14,7 @@ const TeamsPage = () => {
             <HeaderTeam className="mb-20">
                 <div className="flex justify-center items-center py-20">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-                    <span className="ml-3 text-textmuted">Loading team members...</span>
+                    <span className="ml-3 text-text-muted">Loading team members...</span>
                 </div>
             </HeaderTeam>
         );
@@ -39,7 +39,7 @@ const TeamsPage = () => {
     return (
         <HeaderTeam className="mb-20">
             <div className="text-center mb-12">
-                <p className="text-textmuted mb-6">
+                <p className="text-text-muted mb-6">
                     {members.length} incredible team member{members.length !== 1 ? 's' : ''} to meet
                 </p>
             </div>

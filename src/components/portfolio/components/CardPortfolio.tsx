@@ -32,7 +32,7 @@ export default function CardPortfolio({ project }: CardPortfolioProps) {
                     {project.technologies && project.technologies.length > 0 && (
                         <div className="flex flex-wrap justify-center gap-2 mb-4">
                             {project.technologies.slice(0, 3).map((tech, index) => (
-                                <span key={index} className="bg-textinverse bg-opacity-20 text-primary px-2 py-1 rounded text-xs line-clamp-1">
+                                <span key={index} className="bg-text-inverse bg-opacity-20 text-primary px-2 py-1 rounded text-xs line-clamp-1">
                                     {tech}
                                 </span>
                             ))}

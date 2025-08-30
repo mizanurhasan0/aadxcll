@@ -22,7 +22,7 @@ const Team = () => {
       <HeaderTeamHome>
         <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          <span className="ml-3 text-textmuted">Loading team members...</span>
+          <span className="ml-3 text-text-muted">Loading team members...</span>
         </div>
       </HeaderTeamHome>
     );
@@ -47,7 +47,7 @@ const Team = () => {
   return (
     <HeaderTeamHome>
       <div className="text-center mb-12">
-        <p className="text-textmuted mb-6">
+        <p className="text-text-muted mb-6">
           {members.length === 0
             ? 'Building an amazing team...'
             : `${members.length} talented professional${members.length !== 1 ? 's' : ''} working together`
@@ -60,7 +60,7 @@ const Team = () => {
         <div className="absolute inset-0 bg-bg bg-opacity-75 flex items-center justify-center z-10">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-            <p className="text-textmuted">Updating team members...</p>
+            <p className="text-text-muted">Updating team members...</p>
           </div>
         </div>
       )}
@@ -73,7 +73,7 @@ const Team = () => {
 
       {hasMore && (
         <div className="mt-10 text-center">
-          <Link href="/teams" className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 text-textmuted rounded-lg transition-colors">See more</Link>
+          <Link href="/teams" className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 text-text-muted rounded-lg transition-colors">See more</Link>
         </div>
       )}
     </HeaderTeamHome>

@@ -6,7 +6,7 @@ export default function HeaderPortfolio({ children, className }: { children: Rea
             <div className="max-w-6xl mx-auto px-4">
                 <div className="text-center pb-4">
                     <p className="text-primary font-semibold mb-4 underline underline-offset-8">Most Popular</p>
-                    <h2 className="text-4xl font-bold text-textColor">Projects</h2>
+                    <h2 className="text-4xl font-bold text-text">Projects</h2>
                 </div>
                 {children}
             </div>
