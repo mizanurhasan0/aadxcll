@@ -8,7 +8,13 @@ import EmptyData from '../shared/EmptyData';
 import { usePortfolio } from '../../hooks/usePortfolio';
 import { useRouter } from 'next/navigation';
 
-const Portfolio = () => {
+interface PortfolioProps {
+  limit?: number;
+  isFullPage?: boolean;
+  className?: string;
+}
+
+const Portfolio = ({ limit, isFullPage = false, className }: PortfolioProps) => {
   const {
     projects,
     visibleProjects,
@@ -17,7 +23,7 @@ const Portfolio = () => {
     activeCategory,
     hasMoreProjects,
     filterByCategory,
-  } = usePortfolio({ limit: 5 });
+  } = usePortfolio({ limit });
 
   const categories = ['All Work', ...Array.from(new Set(projects.map(project => project.category)))];
   const navigate = useRouter();
@@ -26,7 +32,7 @@ const Portfolio = () => {
 
   if (isLoading) {
     return (
-      <HeaderPortfolio>
+      <HeaderPortfolio className={className}>
         <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
           <span className="ml-3 text-text-muted">Loading projects...</span>
@@ -37,7 +43,7 @@ const Portfolio = () => {
 
   if (error) {
     return (
-      <HeaderPortfolio>
+      <HeaderPortfolio className={className}>
         <NotFound error={error} onRetry={() => window.location.reload()} message="Failed to load projects" />
       </HeaderPortfolio>
     );
@@ -45,15 +51,15 @@ const Portfolio = () => {
 
   if (projects.length === 0) {
     return (
-      <HeaderPortfolio>
+      <HeaderPortfolio className={className}>
         <EmptyData message="No projects found" />
       </HeaderPortfolio>
     );
   }
 
   return (
-    <HeaderPortfolio>
-      <div className="text-center mb-12">
+    <HeaderPortfolio className={className}>
+      <div className={`text-center mb-12`}>
         <p className="text-text-muted mb-6">
           {projects.length === 0
             ? 'Creating amazing projects...'
@@ -81,11 +87,11 @@ const Portfolio = () => {
         {visibleProjects.map((project) => (
           <CardPortfolio key={project._id} project={project} />
         ))}
-        {hasMoreProjects && (
+        {!isFullPage && hasMoreProjects && (
           <div onClick={onLoadMoreProjects}>
             <ShowMoreCard
               totalProjects={projects.length}
-              visibleProjects={5}
+              visibleProjects={limit || 5}
             />
           </div>
         )}

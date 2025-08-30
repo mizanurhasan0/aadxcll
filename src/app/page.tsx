@@ -20,7 +20,7 @@ export default function Home() {
       <Services />
       <About />
       <FunFacts />
-      <Portfolio />
+      <Portfolio limit={5} />
       <Partners />
       <Pricing />
       <SecondHero />
