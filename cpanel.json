@@ -1,0 +1,21 @@
+{
+    "deploy": {
+        "module": "aadxcelit",
+        "public": "public",
+        "ignore": [
+            ".git",
+            ".next",
+            "node_modules",
+            "*.log",
+            "*.md",
+            "tsconfig.tsbuildinfo"
+        ]
+    },
+    "cpanel": {
+        "nodejs": {
+            "version": "18",
+            "start": "npm start",
+            "stop": "npm stop"
+        }
+    }
+}

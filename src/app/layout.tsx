@@ -43,7 +43,7 @@ export default function RootLayout({
             <div>
               <Navbar />
               {children}
-              {/* <DebugAuth /> */}
+
               <Newsletter />
               <Footer />
             </div>
