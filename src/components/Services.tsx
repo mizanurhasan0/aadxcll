@@ -54,15 +54,15 @@ const Services = () => {
   // Function to render icon based on icon name
   const renderIcon = (iconName: string) => {
     const iconMap: { [key: string]: React.ReactNode } = {
-      'TvMinimalPlay': <TvMinimalPlay className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'Globe': <Globe className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'Search': <Search className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'ThumbsUp': <ThumbsUp className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'Video': <Video className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'NotebookPen': <NotebookPen className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'Server': <Server className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'FileImage': <FileImage className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
-      'ShoppingCart': <ShoppingCart className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'TvMinimalPlay': <TvMinimalPlay className="w-[70px] h-[70px] text-primary" />,
+      'Globe': <Globe className="w-[70px] h-[70px] text-primary" />,
+      'Search': <Search className="w-[70px] h-[70px] text-primary" />,
+      'ThumbsUp': <ThumbsUp className="w-[70px] h-[70px] text-primary" />,
+      'Video': <Video className="w-[70px] h-[70px] text-primary" />,
+      'NotebookPen': <NotebookPen className="w-[70px] h-[70px] text-primary" />,
+      'Server': <Server className="w-[70px] h-[70px] text-primary" />,
+      'FileImage': <FileImage className="w-[70px] h-[70px] text-primary" />,
+      'ShoppingCart': <ShoppingCart className="w-[70px] h-[70px] text-primary" />,
     };
 
     return iconMap[iconName] || <div className="w-[70px] h-[70px] bg-gray-300 rounded"></div>;
@@ -71,26 +71,23 @@ const Services = () => {
 
 
   return (
-    <section ref={sectionRef} id="services" className="py-20 transition-all duration-300" style={{ backgroundColor: 'var(--color-gray-50)' }}>
+    <section ref={sectionRef} id="services" className="py-20 transition-all duration-300 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-          <p className="font-semibold mb-4 underline underline-offset-8 transition-colors duration-300" style={{ color: 'var(--color-success)' }}>Our Solutions</p>
-          <h2 className="text-4xl font-bold mb-6 transition-colors duration-300" style={{ color: 'var(--color-text-primary)' }}>Services</h2>
+          <p className="font-semibold mb-4 underline underline-offset-8 transition-colors duration-300 text-primary">Our Solutions</p>
+          <h2 className="text-4xl font-bold mb-6 duration-300 text-text">Services</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, idx) => (
             <div
               key={service.id}
-              className={`text-center p-8 border-2 rounded-xl hover:shadow-lg transition-all duration-700 transform cursor-pointer ${animatedCards.includes(idx)
+              className={`text-center px-8 p-4 border-2 rounded-xl hover:shadow-lg transition-all duration-700 transform cursor-pointer bg-bg-card border-primary text-text ${animatedCards.includes(idx)
                 ? 'translate-y-0 opacity-100 scale-100'
                 : 'translate-y-12 opacity-0 scale-95'
                 }`}
               style={{
-                transitionDelay: `${idx * 100}ms`,
-                backgroundColor: 'var(--color-card-bg)',
-                borderColor: 'var(--color-success)',
-                color: 'var(--color-text-primary)'
+                transitionDelay: `${idx * 100}ms`
               }}
               onClick={() => handleServiceClick(service.id)}
             >
@@ -114,7 +111,7 @@ const Services = () => {
               </p>
               <div className={`flex justify-end items-center transition-all duration-700 transform ${animatedCards.includes(idx) ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
-                <button className="font-semibold hover:underline group-hover:text-white transition-colors duration-300" style={{ color: 'var(--color-success)' }}>
+                <button className="font-semibold hover:underline group-hover:text-white transition-colors duration-300 text-primary">
                   Read More
                 </button>
               </div>

@@ -62,8 +62,8 @@ const Navbar = () => {
       className={`w-full fixed top-0 z-50 transform-gpu transition-all duration-300 ease-in-out 
        ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'}
        ${pathname === '/' && !isScrolled
-          ? 'py-5 bg-navbar-bg backdrop-blur-none'
-          : 'py-3 shadow-md bg-navbar-bg-scrolled backdrop-blur-md'
+          ? 'py-5 bg-bg-navbar backdrop-blur-none'
+          : 'py-3 shadow-md bg-bg-navbar-scrolled backdrop-blur-md'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,7 +87,7 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-navbar-text"
+                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-text-inverse"
                 >
                   {link.label}
                 </Link>
@@ -95,7 +95,7 @@ const Navbar = () => {
               {user && (
                 <Link
                   href="/dashboard"
-                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-navbar-text"
+                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-text-inverse"
                 >
                   Dashboard
                 </Link>
@@ -108,11 +108,11 @@ const Navbar = () => {
             {/* <ThemeToggle /> */}
             <button
               onClick={() => user ? handleLogout() : router.push('/auth')}
-              className="relative overflow-hidden px-6 py-2 rounded-md transition-all duration-500 group text-navbar-text border-border-light border bg-button-secondary cursor-pointer"
+              className="relative overflow-hidden px-6 py-2 rounded-md transition-all duration-500 group text-text-inverse border-border border bg-btn-secondary cursor-pointer"
             >
               <span className="relative z-10">{user ? "Logout" : "Login"}</span>
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-button-secondary-hover"
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-btn-secondary-hover"
               ></div>
             </button>
           </div>
@@ -143,13 +143,13 @@ const Navbar = () => {
       <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden '
         }`}>
         <div
-          className="px-2 pt-2 pb-3 space-y-1 backdrop-blur-sm border-t transition-all duration-300 bg-navbar-bg-scrolled border-border-light"
+          className="px-2 pt-2 pb-3 space-y-1 backdrop-blur-sm border-t transition-all duration-300 bg-bg-navbar-scrolled border-border"
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-navbar-text"
+              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-text-inverse"
             >
               {link.label}
             </Link>
@@ -157,7 +157,7 @@ const Navbar = () => {
           {user && (
             <Link
               href="/dashboard"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-navbar-text"
+              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-text-inverse"
             >
               Dashboard
             </Link>
@@ -167,7 +167,7 @@ const Navbar = () => {
           <div className="pt-4 pb-3 border-t flex items-center justify-between">
             <button
               onClick={() => user ? handleLogout() : router.push('/auth')}
-              className="px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-navbar-text"
+              className="px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-text-inverse"
             >
               {user ? "Logout" : "Login"}
             </button>

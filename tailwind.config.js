@@ -6,11 +6,35 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        primary: 'var(--foreground)', // Example: use foreground as primary
-        secondary: 'var(--background)', // Example: use background as secondary
-        accent: '#00B8D9', // Adjust as needed
+        // Core colors
+        primary: 'var(--color-primary)',
+        'primary-hover': 'var(--color-primary-hover)',
+        success: 'var(--color-success)',
+        'success-hover': 'var(--color-success-hover)',
+
+        // Background colors
+        'bg': 'var(--color-bg)',
+        'bg-card': 'var(--color-bg-card)',
+        'bg-navbar': 'var(--color-bg-navbar)',
+        'bg-navbar-scrolled': 'var(--color-bg-navbar-scrolled)',
+
+        // Text colors
+        'text': 'var(--color-text)',
+        'text-muted': 'var(--color-text-muted)',
+        'text-inverse': 'var(--color-text-inverse)',
+
+        // Border colors
+        'border': 'var(--color-border)',
+        'border-card': 'var(--color-border-card)',
+
+        // Button colors
+        'btn-primary': 'var(--color-btn-primary)',
+        'btn-primary-hover': 'var(--color-btn-primary-hover)',
+        'btn-secondary': 'var(--color-btn-secondary)',
+        'btn-secondary-hover': 'var(--color-btn-secondary-hover)',
+
+        // Shadow colors
+        'shadow': 'var(--color-shadow)',
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'Arial', 'sans-serif'],
