@@ -77,7 +77,7 @@ const BlogsPage = () => {
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
                                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === category
-                                    ? 'bg-green-500 text-white'
+                                    ? 'bg-primary text-white'
                                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                                     }`}
                             >
@@ -87,7 +87,7 @@ const BlogsPage = () => {
                     </div>
                 </div>
 
-                <div className="mt-4 text-center">
+                <div className="mt-4 text-right">
                     <p className="text-gray-600">
                         Showing {filteredBlogs.length} of {blogs.length} blog posts
                     </p>
@@ -115,7 +115,7 @@ const BlogsPage = () => {
 
             {/* Back to Home */}
             <div className="mt-16 text-center">
-                <Link href="/" className="inline-block px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors">
+                <Link href="/" className="inline-block px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg transition-colors">
                     Back to Home
                 </Link>
             </div>

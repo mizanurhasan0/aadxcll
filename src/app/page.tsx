@@ -1,7 +1,7 @@
 
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import SecondHero from '@/components/SecondHero';
+// import SecondHero from '@/components/SecondHero';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import FunFacts from '@/components/FunFacts';
@@ -22,7 +22,7 @@ export default function Home() {
       <Portfolio limit={5} />
       <Partners />
       <Pricing />
-      <SecondHero />
+      {/* <SecondHero /> */}
       <Testimonials />
       <Team />
       <Blog />
