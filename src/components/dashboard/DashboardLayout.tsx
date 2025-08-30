@@ -9,6 +9,11 @@ interface DashboardLayoutProps {
     children: React.ReactNode;
 }
 
+interface DashboardChildProps {
+    activeTab: string;
+    setActiveTab: (tab: string) => void;
+}
+
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     const { user, isLoading } = useAuth();
     const router = useRouter();
@@ -16,9 +21,14 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
     // Pass activeTab and switchTab to children
-    const childrenWithProps = React.cloneElement(children as React.ReactElement, {
-        activeTab,
-        setActiveTab: switchTab
+    const childrenWithProps = React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) {
+            return React.cloneElement(child, {
+                activeTab,
+                setActiveTab: switchTab
+            } as DashboardChildProps);
+        }
+        return child;
     });
 
     React.useEffect(() => {

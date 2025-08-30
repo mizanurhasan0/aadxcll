@@ -74,7 +74,7 @@ const About = () => {
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold overflow-hidden">
-                      <Image src="/projects/logo.png" alt="Aadxcel" width={36} height={36} />
+                      <Image src="/logo.png" alt="Aadxcel" width={36} height={36} />
                     </div>
                     <span className="text-base font-semibold text-gray-900">The Aadxcel</span>
                   </div>
