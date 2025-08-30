@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import DebugAuth from "@/components/DebugAuth";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Newsletter from "@/components/Newsletter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({
               <Navbar />
               {children}
               {/* <DebugAuth /> */}
+              <Newsletter />
               <Footer />
             </div>
           </ThemeProvider>

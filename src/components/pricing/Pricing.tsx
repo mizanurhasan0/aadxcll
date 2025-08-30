@@ -13,8 +13,8 @@ const Pricing = () => {
   if (isLoading) {
     return <HeaderPricing>
       <div className="flex justify-center items-center py-20">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400"></div>
-        <span className="ml-3 text-gray-600">Loading pricing plans...</span>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        <span className="ml-3 text-text-muted">Loading pricing plans...</span>
       </div>
     </HeaderPricing>
   }
@@ -40,7 +40,7 @@ const Pricing = () => {
       </div>
       {hasMore && (
         <div className="mt-10 text-center">
-          <Link href="/pricing" className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">See more</Link>
+          <Link href="/pricing" className="inline-block px-6 py-3 bg-gray-100 hover:bg-gray-200 text-text-muted rounded-lg transition-colors">See more</Link>
         </div>
       )}
     </HeaderPricing>
