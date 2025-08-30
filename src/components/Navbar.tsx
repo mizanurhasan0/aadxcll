@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, logout } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,10 +48,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full fixed top-0 z-50 transform-gpu transition-all duration-300 ease-in-out ${isScrolled
-        ? 'bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-gray-900/60 shadow-md py-3'
-        : 'bg-transparent py-5'
-        } ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'}`}
+      className={`w-full fixed top-0 z-50 transform-gpu transition-all duration-300 ease-in-out
+      ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'}
+      ${pathname === '/' && !isScrolled
+          ? 'bg-transparent py-5'
+          : 'bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-gray-900/60 shadow-md py-3'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
