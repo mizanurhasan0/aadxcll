@@ -115,7 +115,7 @@ const BlogsPage = () => {
 
             {/* Back to Home */}
             <div className="mt-16 text-center">
-                <Link href="/" className="inline-block px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-lg transition-colors">
+                <Link href="/" className="inline-block px-6 py-3 bg-primary hover:bg-primaryhover text-white rounded-lg transition-colors">
                     Back to Home
                 </Link>
             </div>

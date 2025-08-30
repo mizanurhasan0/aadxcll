@@ -31,7 +31,7 @@ const ServiceDetailsPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 pt-20">
+        <div className="min-h-screen bg-gray-50 pt-20 pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* Navigation */}
                 <div className="mb-8">
@@ -231,7 +231,7 @@ const ServiceDetailsPage = () => {
 
                 {/* Call to Action */}
                 <div className="mt-12 text-center">
-                    <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-xl p-8 text-white">
+                    <div className="bg-gradient-to-r from-primary to-primaryhover rounded-xl p-8 text-white">
                         <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
                         <p className="text-xl mb-6 opacity-90">
                             Let\`s discuss how our {service.title} service can help your business grow.

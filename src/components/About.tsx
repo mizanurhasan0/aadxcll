@@ -49,7 +49,7 @@ const About = () => {
             }`}>
             Get To Know
           </p>
-          <h2 className={`text-4xl font-bold text-text mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+          <h2 className={`text-4xl font-bold text-textColor mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}>
             About Us
           </h2>
@@ -81,7 +81,7 @@ const About = () => {
                   <span className="text-2xl font-bold text-primary">#1</span>
                 </div>
                 <div className="mt-3">
-                  <p className="text-xl md:text-2xl font-semibold leading-snug text-text">
+                  <p className="text-xl md:text-2xl font-semibold leading-snug text-textColor">
                     Best Creative IT Agency And Solutions
                     <br />
                     <span className="text-primary text-lg md:text-xl">Since 2005.</span>

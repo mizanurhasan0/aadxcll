@@ -32,7 +32,7 @@ const CardPricing: React.FC<CardPricingProps> = ({ data }) => {
                     </li>
                 ))}
             </ul>
-            <button className="w-full bg-primary text-white py-3 rounded-full hover:bg-primary-hover transition-colors font-semibold">
+            <button className="w-full bg-primary text-white py-3 rounded-full hover:bg-primaryhover transition-colors font-semibold">
                 PAY NOW
             </button>
         </div>

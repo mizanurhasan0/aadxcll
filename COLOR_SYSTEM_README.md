@@ -91,7 +91,7 @@ import { colors, colorStyles } from '@/utils/colors';
 Use the utility classes defined in `globals.css`:
 
 ```tsx
-<div className="bg-card border-card text-primary">
+<div className="bg-card bordercard text-primary">
   Content
 </div>
 ```

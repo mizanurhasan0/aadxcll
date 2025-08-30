@@ -6,7 +6,7 @@ export default function HeaderBlog({ children }: { children: React.ReactNode }) 
             <div className="max-w-6xl mx-auto px-4">
                 <div className="text-center mb-16">
                     <p className="text-primary font-semibold mb-4 underline underline-offset-8">All Blog</p>
-                    <h2 className="text-4xl font-bold text-text mb-6">Latest Post</h2>
+                    <h2 className="text-4xl font-bold text-textColor mb-6">Latest Post</h2>
                 </div>
                 {children}
             </div>

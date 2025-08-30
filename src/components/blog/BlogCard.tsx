@@ -86,7 +86,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ data }) => {
                 {/* Read More Button */}
                 <Link
                     href={`/blogs/${data._id}`}
-                    className="w-full bg-primary hover:bg-primary-hover text-white py-2 px-4 rounded-lg transition-colors text-sm font-medium inline-block text-center"
+                    className="w-full bg-primary hover:bg-primaryhover text-white py-2 px-4 rounded-lg transition-colors text-sm font-medium inline-block text-center"
                 >
                     Read More
                 </Link>

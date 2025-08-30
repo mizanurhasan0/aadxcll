@@ -27,7 +27,7 @@ const Testimonials = () => (
             <p className="text-gray-600 mb-6 italic">{testimonial.testimonial}</p>
             <div className="flex items-center">
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4">
-                <span className="text-text-inverse font-bold text-lg">
+                <span className="text-textinverse font-bold text-lg">
                   {testimonial.name.charAt(0)}
                 </span>
               </div>

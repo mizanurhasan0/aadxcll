@@ -35,7 +35,7 @@ const Portfolio = ({ limit, isFullPage = false, className }: PortfolioProps) => 
       <HeaderPortfolio className={className}>
         <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          <span className="ml-3 text-text-muted">Loading projects...</span>
+          <span className="ml-3 text-textmuted">Loading projects...</span>
         </div>
       </HeaderPortfolio>
     );
@@ -60,7 +60,7 @@ const Portfolio = ({ limit, isFullPage = false, className }: PortfolioProps) => 
   return (
     <HeaderPortfolio className={className}>
       <div className={`text-center mb-12`}>
-        <p className="text-text-muted mb-6">
+        <p className="text-textmuted mb-6">
           {projects.length === 0
             ? 'Creating amazing projects...'
             : `${projects.length} incredible project${projects.length !== 1 ? 's' : ''} to explore`
@@ -73,8 +73,8 @@ const Portfolio = ({ limit, isFullPage = false, className }: PortfolioProps) => 
               key={category}
               onClick={() => filterByCategory(category)}
               className={`px-6 py-2 rounded-full transition-colors cursor-pointer capitalize ${activeCategory === category
-                ? 'bg-primary text-text-inverse'
-                : 'bg-gray-100 text-text-muted hover:bg-gray-200'
+                ? 'bg-primary text-textinverse'
+                : 'bg-gray-100 text-textmuted hover:bg-gray-200'
                 }`}
             >
               {category}
