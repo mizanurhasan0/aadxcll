@@ -1,13 +1,26 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTheme } from '@/contexts/ThemeContext';
 import { services } from '@/services/serviceService';
+import {
+  TvMinimalPlay,
+  Globe,
+  Search,
+  ThumbsUp,
+  Video,
+  NotebookPen,
+  Server,
+  FileImage,
+  ShoppingCart
+} from 'lucide-react';
 
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [animatedCards, setAnimatedCards] = useState<number[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
   const router = useRouter();
+  const themeContext = useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,31 +51,53 @@ const Services = () => {
     router.push(`/services/${serviceId}`);
   };
 
+  // Function to render icon based on icon name
+  const renderIcon = (iconName: string) => {
+    const iconMap: { [key: string]: React.ReactNode } = {
+      'TvMinimalPlay': <TvMinimalPlay className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'Globe': <Globe className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'Search': <Search className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'ThumbsUp': <ThumbsUp className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'Video': <Video className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'NotebookPen': <NotebookPen className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'Server': <Server className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'FileImage': <FileImage className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+      'ShoppingCart': <ShoppingCart className="w-[70px] h-[70px]" style={{ color: 'var(--color-success)' }} />,
+    };
+
+    return iconMap[iconName] || <div className="w-[70px] h-[70px] bg-gray-300 rounded"></div>;
+  };
+
+
+
   return (
-    <section ref={sectionRef} id="services" className="py-20 bg-gray-50">
+    <section ref={sectionRef} id="services" className="py-20 transition-all duration-300" style={{ backgroundColor: 'var(--color-gray-50)' }}>
       <div className="max-w-7xl mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
-          <p className="text-success font-semibold mb-4 underline underline-offset-8">Our Solutions</p>
-          <h2 className="text-4xl font-bold mb-6 text-gray-700">Services</h2>
+          <p className="font-semibold mb-4 underline underline-offset-8 transition-colors duration-300" style={{ color: 'var(--color-success)' }}>Our Solutions</p>
+          <h2 className="text-4xl font-bold mb-6 transition-colors duration-300" style={{ color: 'var(--color-text-primary)' }}>Services</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, idx) => (
             <div
               key={service.id}
-              className={`text-center p-8 border-2 border-green-200 text-gray-700 bg-gradient-to-r group hover:from-green-900 hover:to-green-800 rounded-xl hover:shadow-lg transition-all duration-700 transform cursor-pointer ${animatedCards.includes(idx)
+              className={`text-center p-8 border-2 rounded-xl hover:shadow-lg transition-all duration-700 transform cursor-pointer ${animatedCards.includes(idx)
                 ? 'translate-y-0 opacity-100 scale-100'
                 : 'translate-y-12 opacity-0 scale-95'
                 }`}
               style={{
-                transitionDelay: `${idx * 100}ms`
+                transitionDelay: `${idx * 100}ms`,
+                backgroundColor: 'var(--color-card-bg)',
+                borderColor: 'var(--color-success)',
+                color: 'var(--color-text-primary)'
               }}
               onClick={() => handleServiceClick(service.id)}
             >
               <div className='flex justify-between items-center'>
                 <div className={`transition-all duration-700 transform ${animatedCards.includes(idx) ? 'rotate-0 scale-100' : 'rotate-12 scale-75'
                   }`}>
-                  {service.icon}
+                  {renderIcon(service.icon)}
                 </div>
                 <div className={`text-transparent text-outline text-5xl font-bold opacity-25 transition-all duration-700 transform ${animatedCards.includes(idx) ? 'scale-100 opacity-25' : 'scale-50 opacity-0'
                   }`}>
@@ -79,7 +114,7 @@ const Services = () => {
               </p>
               <div className={`flex justify-end items-center transition-all duration-700 transform ${animatedCards.includes(idx) ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'
                 }`}>
-                <button className="text-green-600 font-semibold hover:underline group-hover:text-white transition-colors duration-300">
+                <button className="font-semibold hover:underline group-hover:text-white transition-colors duration-300" style={{ color: 'var(--color-success)' }}>
                   Read More
                 </button>
               </div>

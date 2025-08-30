@@ -38,8 +38,8 @@ const Hero = () => {
             background: { color: "#212529" },
             particles: {
               number: { value: 80, density: { enable: true } },
-              color: { value: "#ffffff" },
-              links: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+              color: { value: "#27AAE2" },
+              links: { enable: true, distance: 150, color: "#27AAE2", opacity: 0.4, width: 1 },
               move: { enable: true, speed: 6, outModes: { default: "out" } },
               opacity: { value: 0.5 },
               size: { value: { min: 1, max: 3 } },

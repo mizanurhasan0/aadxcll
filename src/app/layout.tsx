@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Saira } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import DebugAuth from "@/components/DebugAuth";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -37,10 +38,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${saira.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
-          {children}
-          <DebugAuth />
-          <Footer />
+          <ThemeProvider>
+            <div>
+              <Navbar />
+              {children}
+              {/* <DebugAuth /> */}
+              <Footer />
+            </div>
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

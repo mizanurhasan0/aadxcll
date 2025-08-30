@@ -3,7 +3,7 @@ import { Server, TvMinimalPlay, Globe, Search, ThumbsUp, Video, NotebookPen, Fil
 export interface Service {
     id: string;
     number: string;
-    icon: React.ReactNode;
+    icon: string;
     title: string;
     shortDesc: string;
     fullDesc: string;
@@ -27,7 +27,7 @@ export const services: Service[] = [
     {
         id: 'full-stack-digital-marketing',
         number: '01',
-        icon: <TvMinimalPlay className='w-[70px] h-[70px] text-success' />,
+        icon: 'TvMinimalPlay',
         title: 'Full Stack Digital Marketing',
         shortDesc: 'Digital marketing service empowers small, medium & large businesses to compete with larger enterprises. We help you to separate your voice from hauling competitors.',
         fullDesc: 'Our comprehensive digital marketing solutions encompass every aspect of online presence management. From strategic planning to execution and optimization, we provide end-to-end digital marketing services that drive real business results.',
@@ -73,7 +73,7 @@ export const services: Service[] = [
     {
         id: 'web-development',
         number: '02',
-        icon: <Globe className='w-[70px] h-[70px] text-success' />,
+        icon: 'Globe',
         title: 'Web Development',
         shortDesc: 'Every business needs a user-friendly website. We create in-demand design websites which will provide our clients to achieve customer trust, growth & business required needs.',
         fullDesc: 'We specialize in creating modern, responsive, and high-performance websites that not only look great but also drive business results. Our development process focuses on user experience, performance, and scalability.',
@@ -120,7 +120,7 @@ export const services: Service[] = [
     {
         id: 'search-engine-optimization',
         number: '03',
-        icon: <Search className='w-[70px] h-[70px] text-success' />,
+        icon: 'Search',
         title: 'Search Engine Optimization',
         shortDesc: 'SEO is an effective way to get incredible results & generate high organic traffic to your website. Complete SEO service helping your business to secure Google\'s first page.',
         fullDesc: 'Our SEO services are designed to improve your website\'s visibility in search engines, drive organic traffic, and increase conversions. We use white-hat techniques and data-driven strategies for sustainable results.',
@@ -166,7 +166,7 @@ export const services: Service[] = [
     {
         id: 'social-media-marketing',
         number: '04',
-        icon: <ThumbsUp className='w-[70px] h-[70px] text-success' />,
+        icon: 'ThumbsUp',
         title: 'Social Media Marketing',
         shortDesc: 'Digital marketing service empowers small, medium & large businesses to compete with larger enterprises. We help you to separate your voice from hauling competitors.',
         fullDesc: 'We create engaging social media strategies that build brand awareness, engage your audience, and drive business growth. Our approach combines creative content with data-driven insights.',
@@ -212,7 +212,7 @@ export const services: Service[] = [
     {
         id: 'video-production',
         number: '05',
-        icon: <Video className='w-[70px] h-[70px] text-success' />,
+        icon: 'Video',
         title: 'Video Production',
         shortDesc: '91% of businesses use high-quality video production services like script, edit, shoot, produce & distribute video for increased engagement & build trust with target customer.',
         fullDesc: 'Our video production services help businesses create compelling visual content that engages audiences and drives results. From concept to final delivery, we handle every aspect of video creation.',
@@ -258,7 +258,7 @@ export const services: Service[] = [
     {
         id: 'content-writing',
         number: '06',
-        icon: <NotebookPen className='w-[70px] h-[70px] text-success' />,
+        icon: 'NotebookPen',
         title: 'Content Writing',
         shortDesc: 'Content is always king for marketing. There are no options to represent any business with content marketing. It is the best way to attract customers of relevant content.',
         fullDesc: 'We create high-quality, engaging content that resonates with your target audience and drives business results. Our content strategy focuses on value, relevance, and conversion.',
@@ -304,7 +304,7 @@ export const services: Service[] = [
     {
         id: 'server-side-tracking',
         number: '07',
-        icon: <Server className='w-[70px] h-[70px] text-success' />,
+        icon: 'Server',
         title: 'Server Side Tracking',
         shortDesc: 'Server-side tracking collects website data on a dedicated server instead of the user\'s browser, bypassing adblockers & tracking prevention for accurate & uninterrupted data capture.',
         fullDesc: 'Our server-side tracking solutions provide accurate, reliable data collection that bypasses ad blockers and tracking prevention tools, ensuring you get complete insights into your website performance.',
@@ -350,7 +350,7 @@ export const services: Service[] = [
     {
         id: 'graphic-design',
         number: '08',
-        icon: <FileImage className='w-[70px] h-[70px] text-success' />,
+        icon: 'FileImage',
         title: 'Graphic Design',
         shortDesc: 'Graphic design services promote your brand with stunning visuals, logos, and marketing materials. Enhance your identity & captivate your audience with creative designs.',
         fullDesc: 'We create visually stunning designs that strengthen your brand identity and engage your audience. From logos to marketing materials, our designs are both beautiful and effective.',
@@ -396,7 +396,7 @@ export const services: Service[] = [
     {
         id: 'ecommerce-marketing',
         number: '09',
-        icon: <ShoppingCart className='w-[70px] h-[70px] text-success' />,
+        icon: 'ShoppingCart',
         title: 'E-Commerce Marketing',
         shortDesc: 'Its increased sales, online store visibility, convert web visitors into customers & also successful marketing strategy have become a pivotal part of revenue growth.',
         fullDesc: 'Our e-commerce marketing strategies are designed to increase online store visibility, drive traffic, and convert visitors into customers. We focus on strategies that deliver measurable ROI.',
@@ -455,5 +455,7 @@ export class ServiceService {
         return services;
     }
 }
+
+
 
 

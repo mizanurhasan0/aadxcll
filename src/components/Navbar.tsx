@@ -1,16 +1,22 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
+// import { useTheme } from '@/contexts/ThemeContext';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import ThemeToggle from './shared/ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { user, logout } = useAuth();
+  // const themeContext = useTheme();
   const router = useRouter();
   const pathname = usePathname();
+
+  // Safely access theme, defaulting to 'light' if not available
+  // const theme = themeContext?.theme || 'light';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,13 +52,18 @@ const Navbar = () => {
     { href: "/contact", label: "Contact Us" },
   ];
 
+  // Don't render until mounted
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <nav
-      className={`w-full fixed top-0 z-50 transform-gpu transition-all duration-300 ease-in-out
-      ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'}
-      ${pathname === '/' && !isScrolled
-          ? 'bg-transparent py-5'
-          : 'bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-gray-900/60 shadow-md py-3'
+      className={`w-full fixed top-0 z-50 transform-gpu transition-all duration-300 ease-in-out 
+       ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'}
+       ${pathname === '/' && !isScrolled
+          ? 'py-5 bg-navbar-bg backdrop-blur-none'
+          : 'py-3 shadow-md bg-navbar-bg-scrolled backdrop-blur-md'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +87,7 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-white hover:text-success transition-colors duration-200 text-base font-medium"
+                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-navbar-text"
                 >
                   {link.label}
                 </Link>
@@ -84,7 +95,7 @@ const Navbar = () => {
               {user && (
                 <Link
                   href="/dashboard"
-                  className="text-white hover:text-success transition-colors duration-200 text-base font-medium"
+                  className="hover:text-primary transition-colors duration-200 text-base font-medium text-navbar-text"
                 >
                   Dashboard
                 </Link>
@@ -92,15 +103,17 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Desktop Auth Button */}
-          <div className="hidden md:block">
+          {/* Desktop Auth Button & Theme Toggle */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* <ThemeToggle /> */}
             <button
               onClick={() => user ? handleLogout() : router.push('/auth')}
-              className="relative overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-2 rounded-full hover:bg-white/20 transition-all duration-500 group"
+              className="relative overflow-hidden px-6 py-2 rounded-md transition-all duration-500 group text-navbar-text border-border-light border bg-button-secondary cursor-pointer"
             >
               <span className="relative z-10">{user ? "Logout" : "Login"}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/30 via-transparent to-blue-400/30 transform translate-x-full translate-y-[-50%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700 ease-out"></div>
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-button-secondary-hover"
+              ></div>
             </button>
           </div>
 
@@ -108,7 +121,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-success hover:bg-white/10 transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-primary hover:bg-white/10 transition-colors duration-200"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -127,14 +140,16 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation Menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+      <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden '
         }`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-900/95 backdrop-blur-sm border-t border-white/10">
+        <div
+          className="px-2 pt-2 pb-3 space-y-1 backdrop-blur-sm border-t transition-all duration-300 bg-navbar-bg-scrolled border-border-light"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-success hover:bg-white/10 transition-colors duration-200"
+              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-navbar-text"
             >
               {link.label}
             </Link>
@@ -142,20 +157,21 @@ const Navbar = () => {
           {user && (
             <Link
               href="/dashboard"
-              className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-success hover:bg-white/10 transition-colors duration-200"
+              className="block px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-navbar-text"
             >
               Dashboard
             </Link>
           )}
 
-          {/* Mobile Auth Button */}
-          <div className="pt-4 pb-3 border-t border-white/10">
+          {/* Mobile Auth Button & Theme Toggle */}
+          <div className="pt-4 pb-3 border-t flex items-center justify-between">
             <button
               onClick={() => user ? handleLogout() : router.push('/auth')}
-              className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:text-success hover:bg-white/10 transition-colors duration-200"
+              className="px-3 py-2 rounded-md text-base font-medium hover:text-primary hover:bg-white/10 transition-colors duration-200 text-navbar-text"
             >
               {user ? "Logout" : "Login"}
             </button>
+            {/* <ThemeToggle /> */}
           </div>
         </div>
       </div>
