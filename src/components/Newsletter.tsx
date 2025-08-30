@@ -1,8 +1,10 @@
 'use client'
 import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const Newsletter = () => {
     const [email, setEmail] = useState('');
+    const pathname = usePathname();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -12,7 +14,7 @@ const Newsletter = () => {
     };
 
     return (
-        <section className="relative">
+        <section className={`relative ${pathname === '/dashboard' ? 'hidden' : ''}`} >
             <div className="absolute max-w-6xl mx-auto -top-24 left-1/2 -translate-x-1/2  p-10 container  rounded-2xl z-10 flex flex-col lg:flex-row items-center justify-between gap-8 bg-gray-800">
                 {/* Left side - Text content */}
                 <div className="flex-1 text-center lg:text-left">

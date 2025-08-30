@@ -58,6 +58,7 @@
   --color-success: var(--color-success);
   --color-success-hover: var(--color-success-hover);
 
+  --color-foreground: #111827;
   /* Background colors */
   --color-bg: var(--color-bg);
   --color-bg-card: var(--color-bg-card);
@@ -65,7 +66,7 @@
   --color-bg-navbar-scrolled: var(--color-bg-navbar-scrolled);
 
   /* Text colors */
-  --color-text: var(--color-text);
+  --color-text: #111827;
   --color-text-muted: var(--color-text-muted);
   --color-text-inverse: var(--color-text-inverse);
 

@@ -15,7 +15,6 @@ import Blog from '@/components/blog/Blog';
 export default function Home() {
   return (
     <div className="min-h-screen">
-
       <Hero />
       <Services />
       <About />

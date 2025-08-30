@@ -1,9 +1,11 @@
 "use client";
 import React from 'react';
 import { useSettings } from '@/hooks/useSettings';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
   const { settings, loading, error } = useSettings();
+  const pathname = usePathname();
 
   // Default values in case settings are not loaded
   const defaultSettings = {
@@ -89,7 +91,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gray-900 text-white py-12 pt-60">
+    <footer className={`bg-gray-900 text-white py-12 pt-60 ${pathname === '/dashboard' ? 'hidden' : ''}`} >
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}

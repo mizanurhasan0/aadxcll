@@ -49,7 +49,7 @@ const About = () => {
             }`}>
             Get To Know
           </p>
-          <h2 className={`text-4xl font-bold text-text-inverse mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+          <h2 className={`text-4xl font-bold text-text mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}>
             About Us
           </h2>

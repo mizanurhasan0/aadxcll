@@ -61,10 +61,11 @@ const Navbar = () => {
     <nav
       className={`w-full fixed top-0 z-50 transform-gpu transition-all duration-300 ease-in-out 
        ${mounted ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'}
+       ${pathname === '/dashboard' ? 'hidden' : ''}
        ${pathname === '/' && !isScrolled
           ? 'py-5 bg-bg-navbar backdrop-blur-none'
           : 'py-3 shadow-md bg-bg-navbar-scrolled backdrop-blur-md'
-        }`}
+        } `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -72,7 +73,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <img
-                src="/projects/logolight.png"
+                src="/Aadxcel-logo.png"
                 alt="Logo"
                 className={`transition-all duration-300 ${isScrolled ? 'h-8' : 'h-10'
                   }`}
