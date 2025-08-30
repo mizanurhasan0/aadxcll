@@ -7,24 +7,26 @@ const Partners = () => {
     const [canScrollRight, setCanScrollRight] = useState(true);
 
     const partners = [
-        { name: 'www.egenslab.com', logo: '/projects/partner-1.png' },
-        { name: 'my life', logo: '/projects/partner-2.png' },
-        { name: 'abc.com', logo: '/projects/partner-3.png' },
-        { name: '@tuenti', logo: '/projects/partner-4.png' },
-        { name: 'ariete', logo: '/projects/partner-5.png' },
-        { name: 'my life', logo: '/projects/partner-2.png' },
-        { name: 'abc.com', logo: '/projects/partner-3.png' },
-        { name: '@tuenti', logo: '/projects/partner-4.png' },
-        { name: 'ariete', logo: '/projects/partner-5.png' }
+        { name: 'my life', logo: '/brands/partner1.png' },
+        { name: 'abc.com', logo: '/brands/partner2.jpeg' },
+        { name: '@tuenti', logo: '/brands/partner3.jpeg' },
+        { name: 'ariete', logo: '/brands/partner4.jpeg' },
+        { name: 'my life', logo: '/brands/partner5.jpeg' },
+        { name: 'abc.com', logo: '/brands/partner6.jpeg' }
     ];
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {
             const scrollAmount = 300;
             const currentScroll = scrollContainerRef.current.scrollLeft;
-            const newScroll = direction === 'left'
-                ? currentScroll - scrollAmount
-                : currentScroll + scrollAmount;
+            const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
+
+            let newScroll;
+            if (direction === 'left') {
+                newScroll = Math.max(0, currentScroll - scrollAmount);
+            } else {
+                newScroll = Math.min(maxScroll, currentScroll + scrollAmount);
+            }
 
             scrollContainerRef.current.scrollTo({
                 left: newScroll,
