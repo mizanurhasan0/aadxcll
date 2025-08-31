@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useMemo } from 'react';
-import Link from 'next/link';
 import { services } from '@/services/serviceService';
-import { Search, Filter, ArrowRight } from 'lucide-react';
 import Services from '@/components/Services';
 
 const ServicesPage = () => {

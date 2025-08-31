@@ -449,7 +449,7 @@ export class ServiceService {
         return services.find(service => service.id === id);
     }
 
-    static getServicesByCategory(category: string): Service[] {
+    static getServicesByCategory(): Service[] {
         // You can implement category filtering here
         return services;
     }

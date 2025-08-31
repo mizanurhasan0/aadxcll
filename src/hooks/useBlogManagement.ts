@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { TBlog, TBlogFormData } from '@/components/dashboard/blogManagement/TypeBlogManagement';
-import { BlogService, BlogServiceResponse } from '@/services/blogService';
+import { BlogService } from '@/services/blogService';
 import { useToaster } from '@/components/shared/useToaster';
 
 interface UseBlogManagementProps {

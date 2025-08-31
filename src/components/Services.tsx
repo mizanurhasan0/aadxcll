@@ -20,7 +20,6 @@ const Services = () => {
   const [animatedCards, setAnimatedCards] = useState<number[]>([]);
   const sectionRef = useRef<HTMLElement>(null);
   const router = useRouter();
-  const themeContext = useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(

@@ -2,8 +2,21 @@
 import React from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle, Star, Clock, Users, Target } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Star, Clock, Users, Target, TvMinimalPlay, Globe, Search, ThumbsUp, Video, NotebookPen, Server, FileImage, ShoppingCart } from 'lucide-react';
 import { ServiceService } from '@/services/serviceService';
+
+// Icon mapping to prevent 'self is not defined' error
+const iconMap: { [key: string]: React.ReactNode } = {
+    'TvMinimalPlay': <TvMinimalPlay className="w-8 h-8" />,
+    'Globe': <Globe className="w-8 h-8" />,
+    'Search': <Search className="w-8 h-8" />,
+    'ThumbsUp': <ThumbsUp className="w-8 h-8" />,
+    'Video': <Video className="w-8 h-8" />,
+    'NotebookPen': <NotebookPen className="w-8 h-8" />,
+    'Server': <Server className="w-8 h-8" />,
+    'FileImage': <FileImage className="w-8 h-8" />,
+    'ShoppingCart': <ShoppingCart className="w-8 h-8" />
+};
 
 const ServiceDetailsPage = () => {
     const params = useParams();
@@ -49,7 +62,7 @@ const ServiceDetailsPage = () => {
                     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6">
                         <div className="flex items-center mb-4 lg:mb-0">
                             <div className="text-green-600 mr-6">
-                                {service.icon}
+                                {iconMap[service.icon] || <div className="w-8 h-8 bg-green-600 rounded"></div>}
                             </div>
                             <div>
                                 <span className="text-6xl font-bold text-gray-200 opacity-50">
@@ -188,7 +201,7 @@ const ServiceDetailsPage = () => {
                                         >
                                             <div className="flex items-center">
                                                 <div className="text-green-600 mr-3">
-                                                    {relatedService.icon}
+                                                    {iconMap[relatedService.icon] || <div className="w-8 h-8 bg-green-600 rounded"></div>}
                                                 </div>
                                                 <div>
                                                     <h4 className="font-medium text-gray-900 text-sm">
