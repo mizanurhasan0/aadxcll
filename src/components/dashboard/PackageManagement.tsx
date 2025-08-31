@@ -32,7 +32,7 @@ type TPackageFormData = {
 }
 const PackageManagement: React.FC = () => {
     const { token } = useAuth();
-    const { toasts, removeToast, showSuccess, showError, showWarning } = useToaster();
+    const { toasts, removeToast, showSuccess, showError } = useToaster();
 
     // Get token from cookies if not in context
     const getAuthToken = () => {
@@ -165,8 +165,8 @@ const PackageManagement: React.FC = () => {
                 showError(`Error: ${error.error}`);
             }
         } catch (error) {
-                console.error('Error deleting package:', error);
-                showError('An error occurred while deleting the package');
+            console.error('Error deleting package:', error);
+            showError('An error occurred while deleting the package');
         }
     };
 

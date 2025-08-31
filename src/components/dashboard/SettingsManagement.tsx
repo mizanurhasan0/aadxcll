@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { Save, Image, Globe, Mail } from 'lucide-react';
+import { Save, Image as ImageIcon, Globe, Mail } from 'lucide-react';
 import { getCookie } from '@/lib/cookies';
+import Image from 'next/image';
 
 interface WebsiteSettings {
     logoLight: string;
@@ -41,7 +42,7 @@ const SettingsManagement: React.FC = () => {
         address: '',
         socialLinks: {}
     });
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading,] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [message, setMessage] = useState('');
 
@@ -153,7 +154,7 @@ const SettingsManagement: React.FC = () => {
                 {/* Logo Settings */}
                 <div className="bg-gray-800 rounded-lg p-6">
                     <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                        <Image className="w-5 h-5 mr-2" />
+                        <ImageIcon className="w-5 h-5 mr-2" />
                         Logo & Branding
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -349,17 +350,21 @@ const SettingsManagement: React.FC = () => {
                     <div className="bg-gray-700 rounded-lg p-4">
                         <div className="flex items-center space-x-4 mb-4">
                             {settings.logoLight && (
-                                <img
+                                <Image
                                     src={settings.logoLight}
                                     alt="Light Logo"
                                     className="h-8 object-contain"
+                                    width={500}
+                                    height={500}
                                 />
                             )}
                             {settings.logoDark && (
-                                <img
+                                <Image
                                     src={settings.logoDark}
                                     alt="Dark Logo"
                                     className="h-8 object-contain"
+                                    width={500}
+                                    height={500}
                                 />
                             )}
                         </div>

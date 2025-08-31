@@ -10,6 +10,7 @@ import ImageUpload from '@/components/shared/ImageUpload';
 import FormField from '@/components/shared/FormField';
 import { useToaster } from '../shared/useToaster';
 import Toaster from '../shared/Toaster';
+import Image from 'next/image';
 
 interface TeamMember {
     _id?: string;
@@ -200,10 +201,12 @@ const TeamManagement: React.FC = () => {
                     {teamMembers.map((member) => (
                         <div key={member._id} className="bg-gray-700 rounded-lg p-4 flex items-center justify-between">
                             <div className="flex items-center space-x-4">
-                                <img
+                                <Image
                                     src={member.image || ''}
                                     alt={member.name}
                                     className="w-16 h-16 object-cover rounded-lg"
+                                    width={500}
+                                    height={500}
                                 />
                                 <div>
                                     <h3 className="text-white font-medium">{member.name}</h3>

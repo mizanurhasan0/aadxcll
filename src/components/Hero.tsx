@@ -83,7 +83,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex justify-center w-full">
-                <Image src="projects/hero-vector.png" alt="Team" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
+                <Image src="/projects/hero-vector.png" alt="Team" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex justify-center w-full">
-                <Image src="projects/hero-vector.png" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
+                <Image src="/projects/hero-vector.png" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
               </div>
             </div>
           </div>

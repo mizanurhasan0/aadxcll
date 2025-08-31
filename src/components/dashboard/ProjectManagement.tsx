@@ -10,6 +10,7 @@ import FormField from '@/components/shared/FormField';
 import ImageUpload from '@/components/shared/ImageUpload';
 import { useToaster } from '../shared/useToaster';
 import Toaster from '../shared/Toaster';
+import Image from 'next/image';
 
 interface Project {
     _id: string;
@@ -44,7 +45,7 @@ type TProjectFormData = {
 
 const ProjectManagement: React.FC = () => {
     const { token } = useAuth();
-    const { toasts, removeToast, showSuccess, showError, showWarning } = useToaster();
+    const { toasts, removeToast, showSuccess, showError } = useToaster();
 
     // Get token from cookies if not in context
     const getAuthToken = () => {
@@ -212,10 +213,12 @@ const ProjectManagement: React.FC = () => {
                     {projects.map((project) => (
                         <div key={project._id} className="bg-gray-700 rounded-lg p-4 flex items-center justify-between">
                             <div className="flex items-center space-x-4">
-                                <img
+                                <Image
                                     src={project.image}
                                     alt={project.title}
                                     className="w-20 h-20 object-cover rounded-lg"
+                                    width={500}
+                                    height={500}
                                 />
                                 <div className="flex-1">
                                     <div className="flex items-center space-x-2 mb-2">

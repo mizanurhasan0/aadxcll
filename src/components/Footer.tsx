@@ -4,7 +4,7 @@ import { useSettings } from '@/hooks/useSettings';
 import { usePathname } from 'next/navigation';
 
 const Footer = () => {
-  const { settings, loading, error } = useSettings();
+  const { settings, loading } = useSettings();
   const pathname = usePathname();
 
   // Default values in case settings are not loaded

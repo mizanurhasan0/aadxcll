@@ -13,7 +13,7 @@ const Partners = () => {
         { name: '@tuenti', logo: '/brands/partner3.jpeg' },
         { name: 'ariete', logo: '/brands/partner4.jpeg' },
         { name: 'my life', logo: '/brands/partner5.jpeg' },
-        { name: 'abc.com', logo: '/brands/partner6.jpeg' }
+        { name: 'abc.com', logo: '/brands/partner6.png' }
     ];
 
     const scroll = (direction: 'left' | 'right') => {

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
-import { Bold, Italic, Underline, List, ListOrdered, AlignLeft, AlignCenter, AlignRight, Link, Image, Video } from 'lucide-react';
+import { Bold, Italic, Underline, List, ListOrdered, AlignLeft, AlignCenter, AlignRight, Link, Image as ImageIcon, Video } from 'lucide-react';
 
 interface SimpleTextEditorProps {
     value: string;
@@ -192,7 +192,7 @@ const SimpleTextEditor: React.FC<SimpleTextEditorProps> = ({
                     className="p-2 rounded hover:bg-gray-500 transition-colors text-gray-300"
                     title="Insert Image"
                 >
-                    <Image className="w-4 h-4" />
+                    <ImageIcon className="w-4 h-4" />
                 </button>
 
                 <button
