@@ -98,17 +98,19 @@ const About = () => {
               {/* Larger background frame */}
               <div className={`w-96 h-80 bg-gray-200 rounded-lg shadow-lg overflow-hidden relative transition-all duration-700 delay-200 transform ${isRightAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'
                 }`}>
-                <img
+                <Image
                   src="/projects/about-baner-1.jpeg"
                   alt="Team collaboration"
                   className="w-full h-full object-cover"
+                  width={500}
+                  height={500}
                 />
               </div>
 
               {/* Smaller overlapping frame with video */}
               <div className={`absolute -bottom-8 -right-8 w-64 h-48 bg-gray-300 rounded-lg shadow-xl overflow-hidden cursor-pointer transition-all duration-700 delay-400 transform ${isRightAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-12 opacity-0 scale-90'
                 }`} onClick={openVideoModal}>
-                <img src="/projects/about-baner-2.jpeg" alt="Team collaboration" className="w-full h-full object-cover" />
+                <Image src="/projects/about-baner-2.jpeg" alt="Team collaboration" className="w-full h-full object-cover" width={500} height={500} />
 
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-transparent bg-opacity-20 hover:bg-opacity-30 transition-all">
