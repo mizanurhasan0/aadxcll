@@ -7,7 +7,7 @@ export const useToaster = () => {
   const addToast = useCallback((type: ToastType, message: string, duration: number = 5000) => {
     const id = Math.random().toString(36).substr(2, 9);
     const newToast: Toast = { id, type, message, duration };
-    
+
     setToasts(prev => [...prev, newToast]);
 
     // Auto remove toast after duration

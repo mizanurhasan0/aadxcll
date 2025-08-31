@@ -1,10 +1,9 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-// import { useTheme } from '@/contexts/ThemeContext';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import ThemeToggle from './shared/ThemeToggle';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -80,11 +79,13 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <img
+              <Image
                 src="/Aadxcel-logo.png"
                 alt="Logo"
                 className={`transition-all duration-300 ${isScrolled ? 'h-8' : 'h-10'
                   }`}
+                width={100}
+                height={100}
               />
             </Link>
           </div>

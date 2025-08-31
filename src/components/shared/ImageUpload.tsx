@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef } from 'react';
-import { Upload, X, Image as ImageIcon } from 'lucide-react';
+import { Upload, X } from 'lucide-react';
+import Image from 'next/image';
 
 interface ImageUploadProps {
     currentImage?: string;
@@ -65,6 +66,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 setUploadError(error.error || 'Upload failed');
             }
         } catch (error) {
+            console.error('Upload error:', error);
             setUploadError('Upload failed. Please try again.');
         } finally {
             setIsUploading(false);
@@ -91,10 +93,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             {/* Current Image Display */}
             {currentImage && (
                 <div className="relative inline-block">
-                    <img
+                    <Image
                         src={currentImage}
                         alt="Current"
                         className="w-32 h-32 object-cover rounded-lg border border-gray-600"
+                        width={100}
+                        height={100}
                     />
                     <button
                         type="button"

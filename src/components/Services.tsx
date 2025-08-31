@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useTheme } from '@/contexts/ThemeContext';
 import { services } from '@/services/serviceService';
 import {
   TvMinimalPlay,

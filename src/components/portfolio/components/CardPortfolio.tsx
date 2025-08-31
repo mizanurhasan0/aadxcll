@@ -1,11 +1,12 @@
 import React from 'react';
 import Button from '../../shared/Button';
 import { CardPortfolioProps } from '../../../types/portfolio';
+import Image from 'next/image';
 
 export default function CardPortfolio({ project }: CardPortfolioProps) {
     return (
         <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <img
+            <Image
                 src={project.image}
                 alt={project.title}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -13,7 +14,10 @@ export default function CardPortfolio({ project }: CardPortfolioProps) {
                     // Fallback to a placeholder image if the image fails to load
                     const target = e.target as HTMLImageElement;
                     target.src = '/placeholder-project.svg';
+                    target.alt = 'Placeholder Project';
                 }}
+                width={500}
+                height={500}
             />
             <div className="absolute inset-0 bg-primary bg-opacity-90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center flex-col text-white">
                 <div className="text-center p-4">

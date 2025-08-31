@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import Image from "next/image";
 
 const sliderSettings = {
   dots: true,
@@ -82,7 +83,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex justify-center w-full">
-                <img src="projects/hero-vector.png" alt="Team" className="rounded-lg shadow-lg max-w-full" />
+                <Image src="projects/hero-vector.png" alt="Team" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
               </div>
             </div>
           </div>
@@ -108,7 +109,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex justify-center w-full">
-                <img src="projects/hero-vector.png" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" />
+                <Image src="projects/hero-vector.png" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
               </div>
             </div>
           </div>

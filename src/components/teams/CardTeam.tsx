@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { TeamMember } from '@/services/teamService';
+import Image from 'next/image';
 
 interface CardTeamProps {
     member: TeamMember;
@@ -10,14 +11,17 @@ const CardTeam: React.FC<CardTeamProps> = ({ member }) => {
     return (
         <div className="text-center group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="relative overflow-hidden rounded-t-xl">
-                <img
+                <Image
                     src={member.image}
                     alt={member.name}
                     className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-200"
                     onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = '/placeholder-profile.svg';
+                        target.alt = 'Placeholder Profile';
                     }}
+                    width={500}
+                    height={500}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                     <p className="text-white text-sm leading-relaxed">{member.bio}</p>

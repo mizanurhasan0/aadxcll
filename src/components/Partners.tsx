@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const Partners = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -82,14 +83,17 @@ const Partners = () => {
                             {partners.map((partner, idx) => (
                                 <div key={idx} className="flex-shrink-0">
                                     <div className="bg-gray-800 rounded-xl p-4 md:p-6 w-32 md:w-40 lg:w-48 h-20 md:h-24 lg:h-32 flex items-center justify-center border border-gray-700 shadow-lg hover:border-emerald-400/50 transition-all duration-300 group">
-                                        <img
+                                        <Image
                                             src={partner.logo}
                                             alt={partner.name}
                                             className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
                                             onError={(e) => {
                                                 const target = e.target as HTMLImageElement;
                                                 target.src = '/placeholder-profile.svg';
+                                                target.alt = 'Placeholder Profile';
                                             }}
+                                            width={100}
+                                            height={100}
                                         />
                                     </div>
                                 </div>

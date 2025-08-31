@@ -44,6 +44,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ targetEmail = 'info@aadxcel.c
             // Reset success message after 3 seconds
             setTimeout(() => setSubmitStatus('idle'), 3000);
         } catch (error) {
+            console.error('Error sending message:', error);
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
