@@ -126,7 +126,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Auth Button & Theme Toggle */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className={`${user ? 'flex md:flex' : 'hidden'}  items-center space-x-4`}>
             {/* <ThemeToggle /> */}
             <button
               onClick={() => user ? handleLogout() : router.push('/auth')}

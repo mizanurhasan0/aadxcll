@@ -99,14 +99,14 @@ const Hero = () => {
                 <p className="text-gray-300 mb-8">
                   Curabitur sed facilisis erat. Vestibulum pharetra eros eget fringilla porttitor. ol Duis a orci nunc. Suspendisse ac convallis sapien, quis commodo libero. Donec nec dui luctus, pellentesque lacus sed, mollis leo.
                 </p>
-                <div className="flex gap-4 justify-center">
+                {/* <div className="flex gap-4 justify-center">
                   <button className="bg-white text-black font-bold px-8 py-3 rounded shadow hover:bg-gray-200 border-2 border-white">
                     Pricing
                   </button>
                   <button className="bg-transparent text-white font-bold px-8 py-3 rounded border-2 border-white hover:bg-white hover:text-black">
                     Projects
                   </button>
-                </div>
+                </div> */}
               </div>
               <div className="flex justify-center w-full">
                 <Image src="/projects/hero-vector.png" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
