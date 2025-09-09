@@ -9,7 +9,7 @@ const SecondHero = () => (
       <div className="text-center mb-16">
         <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
           Best & Reliable<br />
-          <span className="text-green-600">Creative IT.</span>
+          <span className="text-primary">Creative IT.</span>
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           Curabitur sed facilisis erat. Vestibulum pharetra eros eget fringilla porttitor. ol Duis a orci nunc. Suspendisse ac convallis sapien, quis commodo libero. Donec nec dui luctus, pellentesque lacus sed, mollis leo.

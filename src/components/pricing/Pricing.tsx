@@ -25,11 +25,7 @@ const Pricing = () => {
     </HeaderPricing >
   }
 
-  if (packages.length === 0) {
-    return <HeaderPricing>
-      <EmptyData message="No pricing plans found" />
-    </HeaderPricing>
-  }
+  if (packages.length === 0) return null;
 
   return (
     <HeaderPricing>
