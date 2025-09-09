@@ -84,7 +84,7 @@ const Navbar = () => {
                 alt="Logo"
                 className={`transition-all duration-300 ${isScrolled ? 'h-8' : 'h-10'
                   }`}
-                width={100}
+                width={150}
                 height={100}
               />
             </Link>
