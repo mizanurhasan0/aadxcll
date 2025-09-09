@@ -49,8 +49,7 @@ const About = () => {
             }`}>
             Get To Know
           </p>
-          <h2 className={`text-4xl font-bold text-text mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`}>
+          <h2 className={`text-4xl font-bold text-text mb-6 transition-all duration-700 delay-300 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
             About Us
           </h2>
         </div>
@@ -61,12 +60,10 @@ const About = () => {
             }`}>
 
             <h3 className={`text-2xl font-semibold text-gray-900  transition-all duration-700 delay-400 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}>
-              Full-Service Digital Marketing Agency- Grow Your Business Online.
+              }`}> 360 ° Digital Marketing Agency Offers Creative & Effective Solution.
             </h3>
             <p className={`text-gray-600  transition-all duration-700 delay-500 ${isLeftAnimated ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}>
-              As your trusted partner, Aaxcel will provide full-service digital marketing, that will solve every brand’s digital need. From creating targeted SEO strategies to managing dynamic social media campaigns, executing precise PPC ads, unique design & developing customized websites. We develop growth-oriented internet marketing services that build your business towards measurable success.
+              }`}> Creative | Strategic |  Effective Solution Offer 360 ° Digital marketing agency which is called Aadxcel. We will help you to reach the right customer & grab the online market at the right time & also passionate about solving business challenges with our creative, & proven marketing experience.
             </p>
             <div className={`bg-gradient-to-br from-primary/60 to-primary/40 p-[1px] rounded-2xl transition-all duration-700 delay-600 transform ${isLeftAnimated ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-4 opacity-0 scale-95'
               }`}>
@@ -82,9 +79,9 @@ const About = () => {
                 </div>
                 <div className="mt-3">
                   <p className="text-xl md:text-2xl font-semibold leading-snug text-text">
-                    Best Creative IT Agency And Solutions
+                    Unleash Explosive Growth with Aadxcel
                     <br />
-                    <span className="text-primary text-lg md:text-xl">Since 2005.</span>
+                    <span className="text-primary text-sm md:text-base">Your Ultimate Digital Marketing Powerhouse.</span>
                   </p>
                 </div>
               </div>
@@ -139,7 +136,7 @@ const About = () => {
             {/* Video container */}
             <div className="relative w-full h-96 md:h-[500px] rounded-xl overflow-hidden">
               <iframe
-                src="https://www.youtube.com/embed/eZh5BeAZ9Hw?si=Ahc3GPGyosy0Xgtp&autoplay=1"
+                src="https://www.youtube.com/embed/z46m22bFKg4?si=QxVNGFkoGhT-Zlwc"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

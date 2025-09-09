@@ -28,7 +28,7 @@ export const services: Service[] = [
         number: '01',
         icon: 'TvMinimalPlay',
         title: 'Full Stack Digital Marketing',
-        shortDesc: 'Digital marketing service empowers small, medium & large businesses to compete with larger enterprises. We help you to separate your voice from hauling competitors.',
+        shortDesc: 'Boost your online presence with our best-paid marketing service. With full-service digital marketing agency you will- Create Marketing Plan | Drive Sales | Increase ROI & Brand Visibility with our expert team of online branding agency.',
         fullDesc: 'Our comprehensive digital marketing solutions encompass every aspect of online presence management. From strategic planning to execution and optimization, we provide end-to-end digital marketing services that drive real business results.',
         features: [
             'Strategic Marketing Planning',
