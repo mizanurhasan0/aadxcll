@@ -56,16 +56,24 @@ export const services: Service[] = [
         ],
         faqs: [
             {
-                question: 'How long does it take to see results?',
-                answer: 'Initial results can be seen within 4-6 weeks, with significant improvements typically appearing in 3-6 months.'
+                question: 'What Does a Digital Marketer Do?',
+                answer: 'A digital marketer develops and implements online strategies to engage and grow a brand’s audience. They manage the entire customer journey, from initial contact to post-sales follow-up.'
             },
             {
-                question: 'What channels do you focus on?',
-                answer: 'We focus on all major digital channels including Google Ads, Facebook/Instagram, LinkedIn, SEO, email marketing, and content marketing.'
+                question: 'How to Identify a Successful Digital Marketing Company?',
+                answer: 'Choose a company that evaluates your marketing needs and doesn\'t promise quick results. Look for a team with expertise, a focus on setting goals, and transparent reporting. Avoid agencies offering instant fixes and prefer those with proven success and positive reviews.'
             },
             {
-                question: 'Do you provide monthly reports?',
-                answer: 'Yes, we provide comprehensive monthly reports with detailed analytics, insights, and recommendations for improvement.'
+                question: 'Advantages of Digital Marketing Services',
+                answer: 'Digital marketing increases your brand’s reach and visibility cost-effectively. It allows targeted audience engagement and builds stronger customer relationships compared to traditional methods'
+            },
+            {
+                question: 'How important is social media marketing for business growth?',
+                answer: 'Social media marketing helps businesses engage with their audience, build brand awareness, drive website traffic, and generate leads. It’s crucial for maintaining a strong online presence and fostering customer relationships'
+            },
+            {
+                question: 'What is PPC advertising, and how can it benefit my business?',
+                answer: 'PPC (Pay-Per-Click) advertising allows businesses to place ads on search engines and pay only when a user clicks on them. It can quickly drive targeted traffic to your website and is highly measurable for ROI'
             }
         ]
     },
