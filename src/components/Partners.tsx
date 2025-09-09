@@ -63,7 +63,7 @@ const Partners = () => {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="text-center mb-8 md:mb-12">
-                    <p className="text-emerald-400 font-semibold mb-3 md:mb-4 underline underline-offset-8 text-sm md:text-base">
+                    <p className="text-primary font-semibold mb-3 md:mb-4 underline underline-offset-8 text-sm md:text-base">
                         Satisfied partners
                     </p>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6">
