@@ -21,29 +21,34 @@ const Services = () => {
   const router = useRouter();
 
   useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: just show everything immediately
+      setIsVisible(true);
+      setAnimatedCards(services.map((_, index) => index));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // Animate cards with staggered delay
             services.forEach((_, index) => {
               setTimeout(() => {
-                setAnimatedCards(prev => [...prev, index]);
-              }, index * 150); // 150ms delay between each card
+                setAnimatedCards((prev) => [...prev, index]);
+              }, index * 150);
             });
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 } // 🔽 lowered to trigger earlier
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    if (sectionRef.current) observer.observe(sectionRef.current);
 
     return () => observer.disconnect();
   }, []);
+
 
   const handleServiceClick = (serviceId: string) => {
     router.push(`/services/${serviceId}`);
