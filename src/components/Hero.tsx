@@ -14,7 +14,7 @@ const sliderSettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 5000,
   dotsClass: "slick-dots custom-dots",
 };
@@ -83,7 +83,17 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex justify-center w-full">
-                <Image src="/projects/hero-vector.png" alt="Team" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
+                <iframe
+                  src="https://player.vimeo.com/video/1118757116?h=dba663faac&autoplay=0&loop=1&title=0&byline=0&portrait=0&controls=1&sidedock=0&quality=1080p&playsinline=1"
+                  className="rounded-lg shadow-lg max-w-full"
+                  width={500}
+                  height={500}
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  loading="lazy"
+
+                  allowFullScreen
+                />
               </div>
             </div>
           </div>
@@ -109,7 +119,18 @@ const Hero = () => {
                 </div> */}
               </div>
               <div className="flex justify-center w-full">
-                <Image src="/projects/hero-vector.png" alt="Creative IT" className="rounded-lg shadow-lg max-w-full" width={500} height={500} />
+                <video
+                  className="rounded-lg shadow-lg max-w-full object-cover"
+                  width={500}
+                  height={500}
+                  controls
+                  playsInline
+                  loop
+                  preload="metadata"
+                >
+                  <source src="/path/to/your/video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </div>
