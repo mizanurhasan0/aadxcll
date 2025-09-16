@@ -26,8 +26,6 @@ export default function Home() {
       <Testimonials />
       <Team />
       <Blog />
-
-
     </div>
   );
 }

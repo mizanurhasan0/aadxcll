@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Saira } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
-import FacebookChat from "@/components/shared/FacebookChat";
+import WhatsAppChat from "@/components/shared/WhatsAppChat";
 import DebugAuth from "@/components/DebugAuth";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -44,7 +44,7 @@ export default function RootLayout({
             <div>
               <Navbar />
               {children}
-              <FacebookChat />
+              <WhatsAppChat />
               <Newsletter />
               <Footer />
             </div>
