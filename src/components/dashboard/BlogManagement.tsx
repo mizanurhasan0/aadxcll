@@ -11,6 +11,7 @@ import { TBlog, TBlogFormData } from './blogManagement/TypeBlogManagement';
 import { useToaster } from '../shared/useToaster';
 import Toaster from '../shared/Toaster';
 import { useBlogManagement } from '@/hooks/useBlogManagement';
+import Image from 'next/image';
 
 
 const schema = yup.object({
@@ -133,10 +134,12 @@ const BlogManagement: React.FC = () => {
                         {blogs.map((blog) => (
                             <div key={blog._id} className="bg-gray-700 rounded-lg p-4 flex items-center justify-between">
                                 <div className="flex items-center space-x-4">
-                                    <img
+                                    <Image
                                         src={blog.image}
                                         alt={blog.title}
                                         className="w-16 h-16 object-cover rounded-lg"
+                                        width={64}
+                                        height={64}
                                     />
                                     <div>
                                         <h3 className="text-white font-medium">{blog.title}</h3>

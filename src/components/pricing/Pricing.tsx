@@ -1,11 +1,9 @@
 "use client";
-import React from 'react';
-import Link from 'next/link';
-import { usePackages } from '@/hooks/usePackages';
 import CardPricing from '@/components/pricing/components/CardPricing';
-import HeaderPricing from './components/HeaderPricing';
+import { usePackages } from '@/hooks/usePackages';
+import Link from 'next/link';
 import NotFound from '../shared/NotFound';
-import EmptyData from '../shared/EmptyData';
+import HeaderPricing from './components/HeaderPricing';
 
 const Pricing = () => {
   const { visiblePackages, packages, isLoading, error, fetchPackages, hasMore } = usePackages({ limit: 3, activeOnly: true });

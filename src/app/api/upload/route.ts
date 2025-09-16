@@ -1,5 +1,5 @@
+import { mkdir, writeFile } from 'fs/promises';
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 
 export async function POST(request: NextRequest) {
@@ -35,7 +35,6 @@ export async function POST(request: NextRequest) {
         // Generate unique filename
         const timestamp = Date.now();
         const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, '');
-        const extension = path.extname(originalName);
         const filename = `${timestamp}-${originalName}`;
 
         // Create uploads directory if it doesn't exist

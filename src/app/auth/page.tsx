@@ -18,7 +18,7 @@ const AuthPage = () => {
 
     const { login, register, user, isLoading: authLoading } = useAuth();
     const router = useRouter();
-    const { toasts, removeToast, showSuccess, showError, showInfo } = useToaster();
+    const { toasts, removeToast, showSuccess } = useToaster();
 
     console.log('AuthPage render - user:', user, 'authLoading:', authLoading);
 
@@ -90,7 +90,7 @@ const AuthPage = () => {
                 }
             }
         } catch (error) {
-            setError('An error occurred. Please try again.');
+            setError('An error occurred. Please try again.' + (error as Error).message);
         } finally {
             setIsLoading(false);
         }

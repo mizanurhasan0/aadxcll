@@ -1,9 +1,9 @@
 "use client";
-import React from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { ArrowLeft, CheckCircle, Star, Clock, Users, Target, TvMinimalPlay, Globe, Search, ThumbsUp, Video, NotebookPen, Server, FileImage, ShoppingCart } from 'lucide-react';
 import { ServiceService } from '@/services/serviceService';
+import { ArrowLeft, CheckCircle, Clock, FileImage, Globe, NotebookPen, Search, Server, ShoppingCart, Star, Target, ThumbsUp, TvMinimalPlay, Users, Video } from 'lucide-react';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import React from 'react';
 
 // Icon mapping to prevent 'self is not defined' error
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -20,7 +20,6 @@ const iconMap: { [key: string]: React.ReactNode } = {
 
 const ServiceDetailsPage = () => {
     const params = useParams();
-    const router = useRouter();
     const serviceId = params.id as string;
 
     const service = ServiceService.getServiceById(serviceId);

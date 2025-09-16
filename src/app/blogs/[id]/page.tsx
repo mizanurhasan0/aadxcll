@@ -4,6 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import HeaderBlog from '@/components/blog/HeaderBlog';
 import NotFound from '@/components/shared/NotFound';
+import Image from 'next/image';
 
 interface BlogPost {
   _id: string;
@@ -140,7 +141,7 @@ const BlogDetailsPage = () => {
 
         {/* Featured Image */}
         <div className="mb-8">
-          <img
+          <Image
             src={blog.image}
             alt={blog.title}
             className="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg"
@@ -148,6 +149,8 @@ const BlogDetailsPage = () => {
               const target = e.target as HTMLImageElement;
               target.src = '/placeholder-blog.svg';
             }}
+            width={500}
+            height={500}
           />
         </div>
 
