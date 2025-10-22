@@ -6,6 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "node server.js",
+    "start:ssl": "NODE_ENV=production node server.js",
+    "start:https": "HTTPS_PORT=443 node server.js",
     "lint": "next lint"
   },
   "dependencies": {
