@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { useRouter } from "next/navigation";
 
 const sliderSettings = {
   dots: true,
@@ -20,7 +21,7 @@ const sliderSettings = {
 
 const Hero = () => {
   const [particlesReady, setParticlesReady] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
@@ -73,10 +74,10 @@ const Hero = () => {
                   Curabitur sed facilisis erat. Vestibulum pharetra eros eget fringilla porttitor. ol Duis a orci nunc. Suspendisse ac convallis sapien, quis commodo libero. Donec nec dui luctus, pellentesque lacus sed, mollis leo.
                 </p>
                 <div className="flex gap-4 justify-center">
-                  <button className="bg-white text-black font-bold px-8 py-3 rounded shadow hover:bg-gray-200 border-2 border-white">
+                  <button onClick={() => router.push('/contact')} className="bg-white text-black font-bold px-8 py-3 rounded shadow hover:bg-gray-200 border-2 border-white">
                     Contact us
                   </button>
-                  <button className="bg-transparent text-white font-bold px-8 py-3 rounded border-2 border-white hover:bg-white hover:text-black">
+                  <button onClick={() => router.push('/portfolio')} className="bg-transparent text-white font-bold px-8 py-3 rounded border-2 border-white hover:bg-white hover:text-black">
                     Projects
                   </button>
                 </div>
@@ -118,18 +119,17 @@ const Hero = () => {
                 </div> */}
               </div>
               <div className="flex justify-center w-full">
-                <video
-                  className="rounded-lg shadow-lg max-w-full object-cover"
+                <iframe
+                  src="https://player.vimeo.com/video/1118757116?h=dba663faac&autoplay=0&loop=1&title=0&byline=0&portrait=0&controls=1&sidedock=0&quality=1080p&playsinline=1"
+                  className="rounded-lg shadow-lg max-w-full"
                   width={500}
                   height={500}
-                  controls
-                  playsInline
-                  loop
-                  preload="metadata"
-                >
-                  <source src="/path/to/your/video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  loading="lazy"
+
+                  allowFullScreen
+                />
               </div>
             </div>
           </div>
